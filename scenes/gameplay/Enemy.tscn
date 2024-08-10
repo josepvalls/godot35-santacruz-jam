@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprites/barnacle_attack.png" type="Texture" id=1]
+[ext_resource path="res://sprites/barnacle.png" type="Texture" id=2]
+[ext_resource path="res://scenes/gameplay/Worm.gd" type="Script" id=3]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Enemy" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 3 )
+
+[node name="Body" type="Line2D" parent="."]
+points = PoolVector2Array( 2, 50, -70, 204, -130, 412, -10, 630, 354, 750, 380, 486 )
+width = 64.0
+default_color = Color( 0.913725, 0.541176, 0.956863, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Head" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+playing = true

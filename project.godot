@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "WormCollider",
 "language": "GDScript",
 "path": "res://scenes/captaintoto/WormCollider.gd"
+}, {
+"base": "Node2D",
+"class": "Worm",
+"language": "GDScript",
+"path": "res://scenes/gameplay/Worm.gd"
 } ]
 _global_script_class_icons={
 "SceneData": "",
 "Scenes": "",
 "Transition": "",
-"WormCollider": ""
+"WormCollider": "",
+"Worm": ""
 }
 
 [application]
