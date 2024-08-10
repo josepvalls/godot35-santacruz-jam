@@ -41,6 +41,11 @@ func update_status():
 	status += "Eating: " + str(eating)
 	status += "\n"
 	status += "Eaten: " + str(eaten)
+	status += "\n"
+	status += "Self-hit: " + str(hit_self)
+	status += "\n"
+	status += "Hit: " + str(hit)
+
 	status_label.text = status
 	
 
