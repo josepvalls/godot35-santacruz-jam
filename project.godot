@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Transition",
 "language": "GDScript",
 "path": "res://addons/game-template/transition/transition.gd"
+}, {
+"base": "Node2D",
+"class": "Worm",
+"language": "GDScript",
+"path": "res://scenes/gameplay/Worm.gd"
 } ]
 _global_script_class_icons={
 "SceneData": "",
 "Scenes": "",
-"Transition": ""
+"Transition": "",
+"Worm": ""
 }
 
 [application]
