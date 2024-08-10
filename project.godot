@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Transition",
 "language": "GDScript",
 "path": "res://addons/game-template/transition/transition.gd"
+}, {
+"base": "Area2D",
+"class": "WormCollider",
+"language": "GDScript",
+"path": "res://scenes/captaintoto/WormCollider.gd"
 } ]
 _global_script_class_icons={
 "SceneData": "",
 "Scenes": "",
-"Transition": ""
+"Transition": "",
+"WormCollider": ""
 }
 
 [application]

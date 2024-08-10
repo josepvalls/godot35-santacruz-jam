@@ -8,6 +8,7 @@ export var follow_margin := 4
 
 var head: Node2D = null
 var body: Line2D = null
+onready var collider: WormCollider = $WormCollider
 var body_points := []
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +22,7 @@ func _ready():
 
 func _process(delta):
 	var target = get_viewport().get_mouse_position()
-	print(head.position.distance_to(target))
+	# print(head.position.distance_to(target))
 	if head.position.distance_to(target) >= follow_margin:
 		head.position += head.position.direction_to(target) * speed * delta
 		var points := body_points.duplicate()
@@ -35,3 +36,6 @@ func _process(delta):
 			points.push_front(head.position)
 			body.points = points
 				
+
+func _physics_process(delta):
+	collider.build_collider(body.points)

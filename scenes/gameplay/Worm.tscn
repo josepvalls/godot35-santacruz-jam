@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/gameplay/Worm.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/worm/worm_body.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/worm/hudPlayer_green.png" type="Texture" id=3]
+[ext_resource path="res://scenes/captaintoto/WormCollider.tscn" type="PackedScene" id=4]
 
 [node name="Worm" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,3 +21,5 @@ end_cap_mode = 2
 [node name="Head" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
+
+[node name="WormCollider" parent="." instance=ExtResource( 4 )]
