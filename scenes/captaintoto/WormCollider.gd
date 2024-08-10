@@ -13,7 +13,8 @@ func build_collider(line: PoolVector2Array):
 	var result = Geometry.offset_polyline_2d(line, width)
 	if result.size() > 1:
 		emit_signal("on_hit_self")
-	shape.polygon = PoolVector2Array(result[0])
+	else:
+		shape.polygon = PoolVector2Array(result[0])
 	# for point in polygon:
 	# 	print(point)
 	
