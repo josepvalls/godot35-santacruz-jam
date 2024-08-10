@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/gameplay/Worm.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/stuff/image-from-rawpixel-id-10164831-png.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/enemies/beetle/beetle_gray_walk1.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/enemies/beetle/beetle_gray_walk2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/enemies/beetle/beetle_gray.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 85.0059
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="Node2D" type="Node2D"]
 
@@ -21,3 +32,9 @@ shape = SubResource( 1 )
 position = Vector2( 580, 125.25 )
 scale = Vector2( 0.141667, 0.149583 )
 texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 844, 137 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
