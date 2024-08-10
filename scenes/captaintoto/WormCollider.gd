@@ -21,3 +21,5 @@ func _physics_process(delta):
 	var areas = get_overlapping_areas()
 	if areas.size() > 0:
 		print("colliding")
+		emit_signal("OnHit")
+	
