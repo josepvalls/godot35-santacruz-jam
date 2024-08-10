@@ -55,18 +55,15 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="Stuff" type="Node2D" parent="."]
 
 [node name="Image-from-rawpixel-id-10165127-png" type="Sprite" parent="Stuff"]
-position = Vector2( 202, 185 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 200, 187 )
 texture = ExtResource( 7 )
 
 [node name="Image-from-rawpixel-id-10165075-png" type="Sprite" parent="Stuff"]
-position = Vector2( 871, 234 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 835, 466 )
 texture = ExtResource( 5 )
 
 [node name="Image-from-rawpixel-id-10164831-png" type="Sprite" parent="Stuff"]
-position = Vector2( 479, 445 )
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 658, 205 )
 texture = ExtResource( 6 )
 
 [node name="Worm" parent="." instance=ExtResource( 4 )]
