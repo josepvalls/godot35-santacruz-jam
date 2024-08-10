@@ -50,7 +50,7 @@ func _process(delta):
 				points.push_front(head.position)
 				body.points = points
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if collider != null:
 		collider.build_collider(body.points)
 	

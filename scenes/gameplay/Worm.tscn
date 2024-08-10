@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/gameplay/Worm.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/worm/worm_body.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/worm/hudPlayer_green.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/worm/worm_body2.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/worm/head03.png" type="Texture" id=3]
 [ext_resource path="res://scenes/captaintoto/WormCollider.tscn" type="PackedScene" id=4]
 
 [node name="Worm" type="Node2D"]
@@ -11,7 +11,7 @@ is_player = true
 
 [node name="Body" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 243, 326, 353, 218, 462, 367, 609, 517, 741, 313 )
-width = 32.0
+width = 20.0
 default_color = Color( 1, 1, 1, 1 )
 texture = ExtResource( 2 )
 texture_mode = 1
@@ -20,7 +20,8 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Head" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.347656, 0.347656 )
 texture = ExtResource( 3 )
 
 [node name="WormCollider" parent="." instance=ExtResource( 4 )]
+width = 6.0
