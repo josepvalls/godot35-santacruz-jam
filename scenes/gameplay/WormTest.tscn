@@ -102,5 +102,7 @@ texture = ExtResource( 6 )
 [node name="Worm" parent="." instance=ExtResource( 4 )]
 
 [node name="Enemy" parent="." instance=ExtResource( 11 )]
+position = Vector2( 886, 406 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1000, 100 )

@@ -6,12 +6,13 @@ export var max_len := 10
 export var point_delta := 32
 export var speed := 256
 export var follow_margin := 4
+export var is_player := false
 
 var start_position := Vector2.ZERO
 var target: Node2D = null
 var head: Node2D = null
 var body: Line2D = null
-onready var collider: WormCollider = $WormCollider
+var collider: WormCollider = null
 var body_points := []
 
 signal moved(point)
@@ -20,9 +21,13 @@ signal moved(point)
 func _ready():
 	body = $Body
 	head = $Head
+	collider = $WormCollider
 	head.position = start_position
 	body_points = [head.position]
 	body.points = body_points
+	if is_player and collider != null:
+		collider.connect("on_hit_self", self, "on_hit_self")
+		collider.connect("on_hit", self, "on_hit")
 
 
 func _process(delta):
@@ -46,4 +51,20 @@ func _process(delta):
 				body.points = points
 
 func _physics_process(delta):
-	collider.build_collider(body.points)
+	if collider != null:
+		collider.build_collider(body.points)
+	
+func on_hit_self():
+	print("hit self")
+	# game_over()
+
+func on_hit():
+	print("hit")
+	# game_over()
+
+
+func game_over():
+	get_tree().paused = true
+	Game.change_scene("res://scenes/menu/menu.tscn", {
+		'show_progress_bar': false
+	})
