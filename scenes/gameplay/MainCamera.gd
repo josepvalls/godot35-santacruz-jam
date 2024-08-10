@@ -5,5 +5,5 @@ func _ready():
 
 func _process(delta):
 	pass
-	#position = $"../Worm/Head".position
+	position = $"../Worm/Head".position
 	

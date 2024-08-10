@@ -2,18 +2,24 @@ extends Node2D
 class_name Worm
 
 
-export var max_len := 10
-export var point_delta := 32
+export var max_len := 20
+export var point_delta := 16
 export var speed := 256
-export var follow_margin := 4
+export var rotate_speed := PI * 4
+export var follow_margin := 32
 export var is_player := false
+export var physics_based_movement := false
+export var momentum_based_movement := true
 
 var start_position := Vector2.ZERO
+var active := false
+var moving := false
 var target: Node2D = null
 var head: Node2D = null
 var body: Line2D = null
 var collider: WormCollider = null
 var body_points := []
+
 
 signal moved(point)
 signal on_hit()
@@ -24,22 +30,46 @@ func _ready():
 	body = $Body
 	head = $Head
 	collider = $WormCollider
-	head.position = start_position
-	body_points = [head.position]
-	body.points = body_points
 	if is_player and collider != null:
 		collider.connect("on_hit_self", self, "on_hit_self")
 		collider.connect("on_hit", self, "on_hit")
 
+func start():
+	head.position = start_position
+	body_points = [head.position]
+	body.points = body_points
+	active = true
+	moving = true
+	
+func _input(event):
+	# trying to test the self-hit recovery
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
+		moving = true
 
-func _process(delta):
-	if target:
+
+
+
+func _physics_process(delta):
+	if active and target:
 		var point = target.position
+		var head_rotation = head.rotation
+		head_rotation -= PI/2
+		var target_rotation = null
 		head.look_at(point)
+		target_rotation = head.rotation
+		var actual_rotation = move_toward(head_rotation, target_rotation, rotate_speed * delta)
+		head.rotation = actual_rotation
+		# this is just for looks until we fix the sprites to face right
 		head.rotation += PI/2
 		point = to_local(point)
-		if head.position.distance_to(point) >= follow_margin:
-			head.position += head.position.direction_to(point) * speed * delta
+		if moving and head.position.distance_to(point) >= follow_margin:
+			if physics_based_movement:
+				head.move_and_slide(Vector2.RIGHT.rotated(actual_rotation) * speed)
+			else:
+				if not momentum_based_movement:
+					head.position += head.position.direction_to(point) * speed * delta
+				else:
+					head.position += Vector2.RIGHT.rotated(actual_rotation) * speed * delta
 			var points := body_points.duplicate()
 			if head.position.distance_to(body_points[0]) >= point_delta:
 				emit_signal("moved", head.position)
@@ -52,17 +82,15 @@ func _process(delta):
 				points.push_front(head.position)
 				body.points = points
 
-func _physics_process(delta):
-	if collider != null:
-		collider.build_collider(body.points)
+			if collider != null:
+				collider.build_collider(body.points)
 	
 func on_hit_self():
-	print("hit self")
 	emit_signal("on_hit_self")
+	# moving = false
 	# game_over()
 
 func on_hit():
-	print("hit")
 	emit_signal("on_hit")
 	# game_over()
 

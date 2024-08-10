@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/backgrounds/grassMid.png" type="Texture" id=1]
 [ext_resource path="res://assets/backgrounds/grassCenter.png" type="Texture" id=2]
@@ -9,9 +9,11 @@
 [ext_resource path="res://assets/sprites/stuff/image-from-rawpixel-id-10165127-png.png" type="Texture" id=7]
 [ext_resource path="res://scenes/gameplay/MainCamera.gd" type="Script" id=8]
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=9]
-[ext_resource path="res://scenes/gameplay/WormTest.gd" type="Script" id=10]
+[ext_resource path="res://scripts/WormTest.gd" type="Script" id=10]
 [ext_resource path="res://scenes/gameplay/Enemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/sprites/stuff/rock2.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/worm/hudPlayer_pink.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/stuff/rock1.png" type="Texture" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grassMid.png 0"
@@ -43,6 +45,12 @@
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="CircleShape2D" id=5]
+radius = 89.0898
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 84.0729
+
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
@@ -55,7 +63,10 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 3 )
 
-[sub_resource type="ViewportTexture" id=2]
+[sub_resource type="ViewportTexture" id=7]
+viewport_path = NodePath("EatenViewport")
+
+[sub_resource type="ViewportTexture" id=8]
 viewport_path = NodePath("EatenViewport")
 
 [node name="WormTest" type="Node2D"]
@@ -86,7 +97,38 @@ texture = ExtResource( 3 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0 )
+tile_data = PoolIntArray( 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 262142, 1, 0, 262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 327678, 1, 0, 327679, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 458750, 1, 0, 458751, 1, 0, 393216, 1, 0, 393217, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0 )
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Rock2" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 839, 725 )
+scale = Vector2( 2, 2 )
+
+[node name="Rock2" type="Sprite" parent="Obstacles/Rock2"]
+position = Vector2( 0, 11 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Rock2"]
+shape = SubResource( 5 )
+
+[node name="Rock1" type="StaticBody2D" parent="Obstacles"]
+position = Vector2( 181, 566 )
+scale = Vector2( 2, 2 )
+
+[node name="Rock1" type="Sprite" parent="Obstacles/Rock1"]
+position = Vector2( -2, -3 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Rock1"]
+shape = SubResource( 6 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Obstacles"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Obstacles/StaticBody2D"]
+polygon = PoolVector2Array( -254, 30, 1276, 34, 1280, -63, -452, -159, -461, 1065, 1472, 1052, 1428, -45, 1287, -29, 1276, 899, -258, 896 )
 
 [node name="PlayerTarget" type="Sprite" parent="."]
 visible = false
@@ -107,34 +149,48 @@ copy_mode = 2
 unique_name_in_owner = true
 
 [node name="Banana" type="Sprite" parent="BackBufferCopy/Stuff"]
-position = Vector2( 200, 187 )
+position = Vector2( 6, 209 )
 texture = ExtResource( 7 )
 
 [node name="Mango" type="Sprite" parent="BackBufferCopy/Stuff"]
-position = Vector2( 838, 420 )
+position = Vector2( 1110, 424 )
 texture = ExtResource( 5 )
 
 [node name="Apple" type="Sprite" parent="BackBufferCopy/Stuff"]
-position = Vector2( 658, 205 )
+position = Vector2( 930, 209 )
 texture = ExtResource( 6 )
 
 [node name="EatenSprite" type="Sprite" parent="BackBufferCopy"]
 material = SubResource( 4 )
-texture = SubResource( 2 )
+texture = SubResource( 7 )
 centered = false
 flip_v = true
 
 [node name="Worm" parent="." instance=ExtResource( 4 )]
 is_player = true
+physics_based_movement = true
 
 [node name="Enemy" parent="." instance=ExtResource( 11 )]
-position = Vector2( 886, 406 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1000, 100 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 11 )]
+max_len = 3
+
+[node name="Body" parent="Enemy3" index="0"]
+default_color = Color( 1, 0.74902, 0, 1 )
+
+[node name="Head" parent="Enemy3" index="1"]
+modulate = Color( 1, 0.913725, 0.00784314, 1 )
+frame = 1
+
+[node name="EatenSprite" type="Sprite" parent="."]
+texture = SubResource( 8 )
+centered = false
+flip_v = true
 
 [node name="EatenViewport" type="Viewport" parent="."]
-size = Vector2( 1024, 600 )
+size = Vector2( 2048, 600 )
 transparent_bg = true
 render_target_clear_mode = 1
 render_target_update_mode = 3
@@ -142,3 +198,5 @@ render_target_update_mode = 3
 [node name="EatenTrace" type="Sprite" parent="EatenViewport"]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 13 )
+
+[editable path="Enemy3"]
