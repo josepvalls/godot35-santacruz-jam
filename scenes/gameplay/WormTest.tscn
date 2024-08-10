@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/backgrounds/grassMid.png" type="Texture" id=1]
 [ext_resource path="res://assets/backgrounds/grassCenter.png" type="Texture" id=2]
@@ -43,6 +43,21 @@
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR = texture(SCREEN_TEXTURE,SCREEN_UV);
+	float alpha_eaten = texture(TEXTURE, UV).a;
+	COLOR.a = COLOR.a - (1.0-alpha_eaten);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("EatenViewport")
+
 [node name="WormTest" type="Node2D"]
 script = ExtResource( 10 )
 
@@ -85,24 +100,45 @@ position = Vector2( 158, 412 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 13 )
 
-[node name="Stuff" type="Node2D" parent="."]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
-[node name="Banana" type="Sprite" parent="Stuff"]
+[node name="Stuff" type="Node2D" parent="BackBufferCopy"]
+unique_name_in_owner = true
+
+[node name="Banana" type="Sprite" parent="BackBufferCopy/Stuff"]
 position = Vector2( 200, 187 )
 texture = ExtResource( 7 )
 
-[node name="Mango" type="Sprite" parent="Stuff"]
+[node name="Mango" type="Sprite" parent="BackBufferCopy/Stuff"]
 position = Vector2( 838, 420 )
 texture = ExtResource( 5 )
 
-[node name="Apple" type="Sprite" parent="Stuff"]
+[node name="Apple" type="Sprite" parent="BackBufferCopy/Stuff"]
 position = Vector2( 658, 205 )
 texture = ExtResource( 6 )
 
+[node name="EatenSprite" type="Sprite" parent="BackBufferCopy"]
+material = SubResource( 4 )
+texture = SubResource( 2 )
+centered = false
+flip_v = true
+
 [node name="Worm" parent="." instance=ExtResource( 4 )]
+is_player = true
 
 [node name="Enemy" parent="." instance=ExtResource( 11 )]
 position = Vector2( 886, 406 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1000, 100 )
+
+[node name="EatenViewport" type="Viewport" parent="."]
+size = Vector2( 1024, 600 )
+transparent_bg = true
+render_target_clear_mode = 1
+render_target_update_mode = 3
+
+[node name="EatenTrace" type="Sprite" parent="EatenViewport"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 13 )
