@@ -16,6 +16,8 @@ var collider: WormCollider = null
 var body_points := []
 
 signal moved(point)
+signal on_hit()
+signal on_hit_self()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -56,10 +58,12 @@ func _physics_process(_delta):
 	
 func on_hit_self():
 	print("hit self")
+	emit_signal("on_hit_self")
 	# game_over()
 
 func on_hit():
 	print("hit")
+	emit_signal("on_hit")
 	# game_over()
 
 
