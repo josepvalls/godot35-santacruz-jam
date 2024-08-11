@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/leaves/leaves-b.png" type="Texture" id=7]
 [ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sprites/other-env/mushroom-a.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=10]
 
 [node name="Level1" type="Node2D"]
 
@@ -105,3 +107,29 @@ script = ExtResource( 1 )
 [node name="StartHere" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2( 521, 414 )
+
+[node name="Decorations" type="Node" parent="."]
+
+[node name="Mushroom-a" type="Sprite" parent="Decorations"]
+position = Vector2( 406, -1203 )
+rotation = 0.31385
+scale = Vector2( 0.384447, 0.450167 )
+texture = ExtResource( 9 )
+
+[node name="Mushroom-a2" type="Sprite" parent="Decorations"]
+position = Vector2( 1408, -848 )
+rotation = -0.29494
+scale = Vector2( 0.434988, 0.596382 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="Mushroom-b2" type="Sprite" parent="Decorations"]
+position = Vector2( 99, 518 )
+rotation = 0.477665
+scale = Vector2( 1.50536, 1.40468 )
+texture = ExtResource( 10 )
+
+[node name="Mushroom-b" type="Sprite" parent="Decorations"]
+position = Vector2( -49, -487 )
+rotation = 0.238832
+texture = ExtResource( 10 )
