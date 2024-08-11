@@ -16,8 +16,8 @@ colors = PoolColorArray( 0.425781, 0.329315, 0, 1, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture2D" id=7]
 gradient = SubResource( 6 )
-width = 2048
-height = 2048
+width = 4096
+height = 4096
 fill = 1
 fill_from = Vector2( 0.5, 0.5 )
 
@@ -57,8 +57,8 @@ colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture2D" id=9]
 gradient = SubResource( 8 )
-width = 2048
-height = 2048
+width = 4096
+height = 4096
 fill = 1
 fill_from = Vector2( 0.5, 0.5 )
 
@@ -66,10 +66,10 @@ fill_from = Vector2( 0.5, 0.5 )
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -1024.0
-margin_top = -1024.0
-margin_right = 1024.0
-margin_bottom = 1024.0
+margin_left = -2048.0
+margin_top = -2048.0
+margin_right = 2048.0
+margin_bottom = 2048.0
 texture = SubResource( 7 )
 
 [node name="BlueGrass" type="Sprite" parent="."]
@@ -118,8 +118,8 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 9 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = -1024.0
-margin_top = -1024.0
-margin_right = 1024.0
-margin_bottom = 1024.0
+margin_left = -2048.0
+margin_top = -2048.0
+margin_right = 2048.0
+margin_bottom = 2048.0
 texture = SubResource( 9 )

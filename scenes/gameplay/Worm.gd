@@ -41,6 +41,7 @@ func _ready():
 		if collider != null:
 			collider.connect("on_hit_self", self, "on_hit_self")
 			collider.connect("on_hit", self, "on_hit")
+		GameManager.player_reference = self
 
 func start(active_: bool = true, moving_: bool = true):
 	head.position = position
@@ -61,7 +62,10 @@ func start(active_: bool = true, moving_: bool = true):
 	post_start()
 	
 func post_start():
-	pass
+	if not is_player:
+		target = GameManager.player_target
+		speed = speed / 2
+		rotate_speed = rotate_speed / 2
 	
 func _input(event):
 	# trying to test the self-hit recovery
@@ -106,6 +110,7 @@ func _physics_process(delta):
 				else:
 					points.push_front(head.position)
 					body.points = points
+					outline.points = points
 
 				if collider != null:
 					collider.build_collider(body.points)
@@ -131,11 +136,3 @@ func on_hit():
 	else:
 		immunity_elapsed = immunity_timeout
 		emit_signal("on_hit")
-		# game_over()
-
-
-func game_over():
-	get_tree().paused = true
-	Game.change_scene("res://scenes/menu/menu.tscn", {
-		'show_progress_bar': false
-	})

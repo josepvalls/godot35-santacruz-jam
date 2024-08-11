@@ -3,6 +3,8 @@ class_name Beetle
 
 func post_start():
 	target = GameManager.player_reference.head
+	speed *= 0.5
+	rotate_speed *= 0.1
 
 func _process(delta):
 	pass

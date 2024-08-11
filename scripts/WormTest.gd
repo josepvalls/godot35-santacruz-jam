@@ -14,6 +14,8 @@ var hit := 0
 var hit_self := 0
 var stuff_progress = {}
 var use_keyboard = false
+var min_len := 3
+var base_len := 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,53 +26,46 @@ func _ready():
 	$Worm.connect("on_hit", self, "on_hit")
 	$Worm.connect("on_hit_self", self, "on_hit_self")
 	$Worm.start(true, false)
-	GameManager.player_reference = $Worm
 	
-	$Enemy.target = $PlayerTarget
-	#$Enemy.start_position = $Worm.start_position - Vector2.LEFT * 60
-	$Enemy.speed = $Worm.speed / 2
-	$Enemy.rotate_speed = $Worm.rotate_speed / 2
-	$Enemy.start()
-	#$Enemy2.start_position = $Worm.start_position - Vector2.LEFT * 120
-	$Enemy2.target = $EnemyTarget
-	$Enemy2.speed = $Worm.speed / 2
-	$Enemy2.rotate_speed = $Worm.rotate_speed / 2
-	$Enemy2.start()
-	#$Enemy3.start_position = $Worm.start_position - Vector2.UP * 60
-	$Enemy3.target = $EnemyTarget
-	$Enemy3.speed = $Worm.speed *2
-	$Enemy3.rotate_speed = $Worm.rotate_speed * 2
-	$Enemy3.start()
-	$Beetle.target = $PlayerTarget
-	$Beetle.speed = 0
-	$Beetle.rotate_speed = $Worm.rotate_speed / 16
-	$Beetle.start()
-	$Beetle2.target = $PlayerTarget
-	$Beetle2.speed = 0
-	$Beetle2.rotate_speed = $Worm.rotate_speed / 16
-	$Beetle2.start()
-
+	for i in $Enemies.get_children():
+		i.start()
+	for i in $Flies.get_children():
+		i.start()
 
 	for item_ in $"%Stuff".get_children():
 		var item: DecayItem = item_
 		if item.material:
 			item.material = item.material.duplicate()
+		item.connect("decayed", self, "decayed")
 		stuff_progress[item.name] = item
-		
-	
-	call_deferred("reposition_enemy_target")
+	GameManager.player_target = $PlayerTarget
+	GameManager.stuff = stuff_progress
+
+func decayed(item: DecayItem):
+	pass
+	# feels better to increase on first bite instead
+	#$Worm.max_len += 1
 
 func on_hit_self():
-	hit_self += 1
+	if is_playing:
+		hit_self += 1
 	
 func on_hit():
-	hit += 1
-	
+	if is_playing:
+		hit += 1
+		$Worm.max_len -= 2
+		if $Worm.max_len < min_len:
+			print("game over")
+			is_playing = false
+			game_over()
 
-func reposition_enemy_target():
-	$EnemyTarget.position = Vector2(get_viewport_rect().size.x * randf(), get_viewport_rect().size.y * randf())
-	yield(get_tree().create_timer(2), "timeout")
-	call_deferred("reposition_enemy_target")
+
+func game_over():
+	get_tree().paused = true
+	Game.change_scene("res://scenes/menu/menu.tscn", {
+		'show_progress_bar': false
+	})
+
 
 func update_status():
 	var status := ""
@@ -82,6 +77,7 @@ func update_status():
 	status += "\n"
 	status += "Hit: " + str(hit)
 	status_label.text = status
+	$CanvasLayer/ProgressBar.value = 100.0 * $Worm.max_len / (base_len + len(stuff_progress) * 2)
 	
 
 func _process(delta):
@@ -150,6 +146,9 @@ func check_eating(point: Vector2) -> bool:
 					eating = "Something decayed"
 	if eating_something:
 		stuff_progress[eating].bites += 1
+		if stuff_progress[eating].bites==1:
+			# first bite
+			$Worm.max_len += 2
 		eaten += 1
 	else:
 		eating = "Nothing"

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/gameplay/EnemyMaggot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/gameplay/EnemyTests.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gameplay/Worm.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gameplay/Fly.tscn" type="PackedScene" id=5]
+
+[node name="EnemyTests" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Maggot" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 279, 216 )
+
+[node name="Maggot2" parent="Enemies" instance=ExtResource( 1 )]
+position = Vector2( 579, 182 )
+rotate_speed = 3.0
+
+[node name="Beetle" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 738, 452 )
+
+[node name="Fly" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 143, 155 )
+
+[node name="Fly2" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 128, 351 )
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundary"]
+polygon = PoolVector2Array( 9, 582, 1019, 593, 1027, 4, 13, 21, -29, 610, -93, 599, -53, -86, 1109, -59, 1125, 668, -4, 657 )
+
+[node name="Worm" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.941176, 0.870588, 0.666667, 1 )
+position = Vector2( 598, 101 )
+is_player = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=2]
@@ -26,6 +26,10 @@
 [ext_resource path="res://assets/sfx/sfx_movement6(slow).wav" type="AudioStream" id=24]
 [ext_resource path="res://assets/sfx/sfx_win.wav" type="AudioStream" id=25]
 [ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=26]
+[ext_resource path="res://scenes/gameplay/EnemyMaggot.tscn" type="PackedScene" id=27]
+[ext_resource path="res://scenes/gameplay/Fly.tscn" type="PackedScene" id=28]
+[ext_resource path="res://assets/sprites/other-env/snek-b.png" type="Texture" id=29]
+[ext_resource path="res://assets/sprites/other-env/snek-a.png" type="Texture" id=30]
 
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.558659, 1 )
@@ -38,6 +42,25 @@ height = 600
 fill = 1
 fill_from = Vector2( 0.35, 0.344362 )
 fill_to = Vector2( 0.879167, 0.718031 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.941176, 0.870588, 0.666667, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 1, 0.603922, 0.0470588, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="ViewportTexture" id=7]
 viewport_path = NodePath("EatenViewport")
@@ -70,6 +93,16 @@ theme = ExtResource( 9 )
 text = "dsf dfds fds fds fds fds"
 autowrap = true
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+margin_left = 5.0
+margin_top = 7.0
+margin_right = 305.0
+margin_bottom = 25.0
+custom_styles/fg = SubResource( 10 )
+custom_styles/bg = SubResource( 11 )
+value = 50.0
+percent_visible = false
+
 [node name="MainCamera" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 8 )
@@ -90,6 +123,12 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 13 )
 
 [node name="Decoration" type="Node2D" parent="."]
+
+[node name="Snek-b" type="Sprite" parent="Decoration"]
+position = Vector2( 1708, 650 )
+rotation = -0.977451
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 29 )
 
 [node name="Rabbit-b" type="Sprite" parent="Decoration"]
 position = Vector2( 389, 208 )
@@ -142,19 +181,10 @@ script = ExtResource( 20 )
 [node name="e" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.976471, 0.447059, 0.0627451, 1 )
 material = ExtResource( 19 )
-position = Vector2( 1291, 741 )
+position = Vector2( 1324, 831 )
 rotation = 2.20568
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 16 )
-script = ExtResource( 20 )
-
-[node name="f" type="Sprite" parent="StuffToEat/Stuff"]
-modulate = Color( 0.619608, 0.94902, 0.317647, 1 )
-material = ExtResource( 19 )
-position = Vector2( 1037, 547 )
-rotation = -2.34885
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 17 )
 script = ExtResource( 20 )
 
 [node name="g" type="Sprite" parent="StuffToEat/Stuff"]
@@ -180,6 +210,18 @@ material = ExtResource( 18 )
 position = Vector2( 389, 208 )
 texture = ExtResource( 6 )
 script = ExtResource( 20 )
+start_decay_bites = 3
+
+[node name="Snek-a" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 1, 0.815686, 0.431373, 1 )
+material = ExtResource( 18 )
+position = Vector2( 1733, 648 )
+rotation = -0.977451
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 30 )
+script = ExtResource( 20 )
+start_decay_bites = 3
+decay_rate = 0.1
 
 [node name="EatenSprite" type="Sprite" parent="StuffToEat"]
 material = ExtResource( 5 )
@@ -192,24 +234,39 @@ modulate = Color( 0.941176, 0.870588, 0.666667, 1 )
 position = Vector2( -119, 959 )
 is_player = true
 
-[node name="Enemy" parent="." instance=ExtResource( 11 )]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 11 )]
 modulate = Color( 0.941176, 0.619608, 0.988235, 1 )
 position = Vector2( -376, 855 )
 
-[node name="Enemy2" parent="." instance=ExtResource( 11 )]
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 11 )]
 modulate = Color( 0.941176, 0.619608, 0.988235, 1 )
-position = Vector2( -328, 1046 )
+position = Vector2( 1497, 123 )
 
-[node name="Enemy3" parent="." instance=ExtResource( 11 )]
-modulate = Color( 1, 0.603922, 0.0470588, 1 )
-position = Vector2( 749, 595 )
-max_len = 4
+[node name="Beetle" parent="Enemies" instance=ExtResource( 26 )]
+position = Vector2( 1008, 539 )
 
-[node name="Beetle" parent="." instance=ExtResource( 26 )]
-position = Vector2( 1347, 1021 )
+[node name="Maggot" parent="Enemies" instance=ExtResource( 27 )]
+position = Vector2( 312, 70 )
 
-[node name="Beetle2" parent="." instance=ExtResource( 26 )]
-position = Vector2( -103, 404 )
+[node name="Maggot5" parent="Enemies" instance=ExtResource( 27 )]
+position = Vector2( 1681, 889 )
+
+[node name="Maggot6" parent="Enemies" instance=ExtResource( 27 )]
+position = Vector2( 1054, 815 )
+
+[node name="Maggot2" parent="Enemies" instance=ExtResource( 27 )]
+position = Vector2( 440, 246 )
+
+[node name="Maggot4" parent="Enemies" instance=ExtResource( 27 )]
+position = Vector2( 483, 286 )
+
+[node name="Maggot3" parent="Enemies" instance=ExtResource( 27 )]
+position = Vector2( 141, 48 )
+
+[node name="Beetle2" parent="Enemies" instance=ExtResource( 26 )]
+position = Vector2( -379, 87 )
 
 [node name="EatenViewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
@@ -233,8 +290,12 @@ position = Vector2( -487, 480 )
 rotation = -1.5708
 
 [node name="Wall4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1464, 742 )
-rotation = 1.5708
+position = Vector2( 1905, 436 )
+rotation = 0.882352
+
+[node name="Wall5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1908, 832 )
+rotation = 2.4992
 
 [node name="Obstacles" type="Node2D" parent="."]
 
@@ -245,6 +306,10 @@ position = Vector2( -235, -13 )
 [node name="RockSA" parent="Obstacles/Rocks" instance=ExtResource( 3 )]
 position = Vector2( 784, 631 )
 
+[node name="RockSA2" parent="Obstacles/Rocks" instance=ExtResource( 3 )]
+position = Vector2( 1659, 1095 )
+rotation = 0.391901
+
 [node name="RockLA" parent="Obstacles/Rocks" instance=ExtResource( 12 )]
 position = Vector2( 529, 596 )
 rotation = 0.126743
@@ -254,11 +319,16 @@ position = Vector2( -89, 608 )
 rotation = -0.445024
 
 [node name="RockLA3" parent="Obstacles/Rocks" instance=ExtResource( 12 )]
-position = Vector2( 1636, 434 )
+position = Vector2( 1639, 464 )
 rotation = 1.4593
 
 [node name="RockSB" parent="Obstacles/Rocks" instance=ExtResource( 15 )]
 position = Vector2( 136, 636 )
+
+[node name="RockSB4" parent="Obstacles/Rocks" instance=ExtResource( 15 )]
+position = Vector2( 2008, 590 )
+rotation = 2.11647
+scale = Vector2( 1.2, 1.4 )
 
 [node name="RockSB2" parent="Obstacles/Rocks" instance=ExtResource( 15 )]
 position = Vector2( 744, 499 )
@@ -274,6 +344,20 @@ position = Vector2( 268, 577 )
 [node name="RockSC2" parent="Obstacles/Rocks" instance=ExtResource( 14 )]
 position = Vector2( 913, 489 )
 rotation = -0.379512
+
+[node name="Flies" type="Node2D" parent="."]
+
+[node name="Fly1" parent="Flies" instance=ExtResource( 28 )]
+
+[node name="Fly2" parent="Flies" instance=ExtResource( 28 )]
+
+[node name="Fly3" parent="Flies" instance=ExtResource( 28 )]
+
+[node name="Fly4" parent="Flies" instance=ExtResource( 28 )]
+
+[node name="Fly5" parent="Flies" instance=ExtResource( 28 )]
+
+[node name="Fly6" parent="Flies" instance=ExtResource( 28 )]
 
 [node name="EventPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 25 )

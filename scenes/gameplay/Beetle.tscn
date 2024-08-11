@@ -23,8 +23,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
-radius = 25.0
-height = 56.0
+radius = 18.0
+height = 32.0
 
 [node name="Beetle" type="Node2D"]
 script = ExtResource( 4 )
@@ -40,18 +40,17 @@ modulate = Color( 0.517647, 0.156863, 1, 1 )
 position = Vector2( 0, -37 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="Head"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
-position = Vector2( 0, -121 )
+position = Vector2( 0, -114 )
 rotation = 1.5708
 shape = SubResource( 3 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Head"]
 enabled = true
-cast_to = Vector2( 0, -360 )
+cast_to = Vector2( 0, -256 )
 collision_mask = 2
 collide_with_areas = true
