@@ -113,7 +113,7 @@ texture = ExtResource( 9 )
 [node name="Stuff" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="rabbet" type="Sprite" parent="Stuff"]
+[node name="rabbit" type="Sprite" parent="Stuff"]
 material = ExtResource( 17 )
 position = Vector2( 1248, 1384 )
 rotation = -0.488979
@@ -124,7 +124,7 @@ start_decay_bites = 60
 [node name="DecayItem7" type="Sprite" parent="Stuff"]
 material = ExtResource( 16 )
 position = Vector2( 1798, 561 )
-rotation = 0.58665
+rotation = 0.584255
 texture = ExtResource( 7 )
 script = ExtResource( 1 )
 start_decay_bites = 30
