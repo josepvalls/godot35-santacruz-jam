@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=14]
 [ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=15]
 [ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/sprites/sticks/twigs.png" type="Texture" id=17]
 
 [node name="Level2" type="Node2D"]
 position = Vector2( 961, 2945 )
@@ -169,20 +170,90 @@ scale = Vector2( 0.366214, 0.439149 )
 z_index = 2
 texture = ExtResource( 13 )
 
+[node name="Mushroom-b5" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 2197, 4303 )
+rotation = 0.470058
+scale = Vector2( 0.559329, 0.722434 )
+z_index = 2
+texture = ExtResource( 14 )
+
+[node name="Mushroom-b3" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 529, 3143 )
+rotation = 0.490507
+scale = Vector2( 0.949238, 0.907246 )
+z_index = 2
+texture = ExtResource( 14 )
+
 [node name="Mushroom-b2" type="Sprite" parent="Decorations"]
 modulate = Color( 1, 0.784314, 0.772549, 1 )
-position = Vector2( 1855, 3327 )
+position = Vector2( -497.656, 3048.84 )
 rotation = 0.495558
 scale = Vector2( 0.794802, 0.911592 )
 z_index = 2
 texture = ExtResource( 14 )
+offset = Vector2( 2770.39, -958.813 )
+
+[node name="Mushroom-b4" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 1798, 5099 )
+rotation = 0.0843752
+z_index = 2
+texture = ExtResource( 14 )
+offset = Vector2( 214.381, -870.717 )
 
 [node name="Mushroom-b" type="Sprite" parent="Decorations"]
 modulate = Color( 1, 0.784314, 0.772549, 1 )
-position = Vector2( 1999, 2426 )
+position = Vector2( 1641.24, 3248.26 )
 rotation = 0.168974
 z_index = 2
 texture = ExtResource( 14 )
+offset = Vector2( 214.381, -870.717 )
+
+[node name="Mushroom-a4" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 1118, 1387 )
+scale = Vector2( -0.462601, 0.587495 )
+z_index = 2
+texture = ExtResource( 13 )
+
+[node name="Mushroom-a3" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 2273, 4243 )
+scale = Vector2( 0.312116, 0.488547 )
+z_index = 2
+texture = ExtResource( 13 )
+
+[node name="Twigs3" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 3074, 2195 )
+z_index = 5
+texture = ExtResource( 17 )
+offset = Vector2( -122, -122 )
+flip_h = true
+
+[node name="Twigs4" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 2577, 1001 )
+z_index = 5
+texture = ExtResource( 17 )
+offset = Vector2( -122, -122 )
+
+[node name="Twigs2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 2410, 3520 )
+z_index = 5
+texture = ExtResource( 17 )
+offset = Vector2( -122, -122 )
+flip_h = true
+
+[node name="Twigs" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 2277, 3425 )
+z_index = 5
+texture = ExtResource( 17 )
+offset = Vector2( -122, -122 )
 
 [node name="Stuff" type="Node" parent="."]
 unique_name_in_owner = true
