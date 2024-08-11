@@ -8,11 +8,12 @@
 extents = Vector2( 1024, 256 )
 
 [node name="Wall" type="Node2D"]
+z_index = 10
 script = ExtResource( 4 )
 num_random = 5
-num_homogeneous = 10
+num_homogeneous = 5
 size_h = 0
-offset = Vector2( -100, -400 )
+offset = Vector2( -100, -500 )
 color_r_mult = 0.3
 color_g_mult = 1.0
 
@@ -22,7 +23,7 @@ margin_top = -512.0
 margin_right = 1024.0
 
 [node name="Leaves" type="Node2D" parent="."]
-modulate = Color( 0.776471, 0.768627, 0.666667, 1 )
+modulate = Color( 0.627451, 0.835294, 0.380392, 1 )
 
 [node name="Sprite0090" type="Sprite" parent="Leaves"]
 position = Vector2( 327, -100 )

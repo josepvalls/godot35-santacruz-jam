@@ -22,3 +22,6 @@ func _process(delta):
 				if decay >= 1.0:
 					decay = 1.0
 					done = true
+		else:
+			var new_scale = 1 + (sin(Time.get_unix_time_from_system() * 1.6) * 0.012)
+			scale = Vector2(new_scale, new_scale)

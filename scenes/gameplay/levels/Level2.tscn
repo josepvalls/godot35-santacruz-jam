@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=2]
@@ -15,9 +15,33 @@
 [ext_resource path="res://assets/sprites/other-env/mushroom-a.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=14]
 [ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=15]
+[ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=16]
 
 [node name="Level2" type="Node2D"]
 position = Vector2( 961, 2945 )
+
+[node name="Backgrounds" type="Node" parent="."]
+
+[node name="Background2" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 1069, 4681 )
+
+[node name="Background3" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 2746, 2640 )
+
+[node name="Background4" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 3115, 4687 )
+
+[node name="Background7" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 1288, 594 )
+
+[node name="Background6" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 3329, 599 )
+
+[node name="Background5" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 4776, 2639 )
+
+[node name="Background" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 699, 2633 )
 
 [node name="StartHere" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -130,82 +154,104 @@ scale = Vector2( 2, 2 )
 [node name="Decorations" type="Node" parent="."]
 
 [node name="Mushroom-a2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
 position = Vector2( 2110, 2450 )
 rotation = -0.0894641
 scale = Vector2( 0.231483, 0.252189 )
+z_index = 2
 texture = ExtResource( 13 )
 flip_h = true
 
 [node name="Mushroom-a" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
 position = Vector2( 2744, 3439 )
 scale = Vector2( 0.366214, 0.439149 )
+z_index = 2
 texture = ExtResource( 13 )
 
 [node name="Mushroom-b2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
 position = Vector2( 1855, 3327 )
 rotation = 0.495558
 scale = Vector2( 0.794802, 0.911592 )
+z_index = 2
 texture = ExtResource( 14 )
 
 [node name="Mushroom-b" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
 position = Vector2( 1999, 2426 )
 rotation = 0.168974
+z_index = 2
 texture = ExtResource( 14 )
 
 [node name="Stuff" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="DecayItem" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1140, 3398 )
 rotation = 0.978632
+z_index = 3
 texture = ExtResource( 9 )
 script = ExtResource( 3 )
 start_decay_bites = 5
 
 [node name="DecayItem2" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2193, 2658 )
+z_index = 3
 texture = ExtResource( 8 )
 script = ExtResource( 3 )
 start_decay_bites = 30
 
 [node name="DecayItem3" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2582, 1849 )
 rotation = 2.83326
+z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
 
 [node name="DecayItem4" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2961, 945 )
 rotation = 1.25566
+z_index = 3
 texture = ExtResource( 11 )
 script = ExtResource( 3 )
 start_decay_bites = 3
 
 [node name="DecayItem5" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2374, 3820 )
 rotation = 0.130134
+z_index = 3
 texture = ExtResource( 11 )
 script = ExtResource( 3 )
 start_decay_bites = 3
 
 [node name="DecayItem6" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1784, 1000 )
 rotation = -0.469821
+z_index = 3
 texture = ExtResource( 8 )
 script = ExtResource( 3 )
 start_decay_bites = 30
 
 [node name="DecayItem7" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 3392, 2516 )
 rotation = -0.0936103
+z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
@@ -215,11 +261,25 @@ unique_name_in_owner = true
 
 [node name="Beetle" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 2280, 2835 )
+z_index = 3
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 12 )]
+modulate = Color( 0.870588, 0.627451, 0.466667, 1 )
+position = Vector2( 2586, 915 )
+scale = Vector2( 1, 1 )
+z_index = 3
+max_len = 4
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 12 )]
+modulate = Color( 0.870588, 0.627451, 0.466667, 1 )
 position = Vector2( 3228, 2341 )
 rotation = 0.130134
 scale = Vector2( 1, 1 )
+z_index = 3
+max_len = 4
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 12 )]
+modulate = Color( 0.870588, 0.627451, 0.466667, 1 )
 position = Vector2( 2322, 1395 )
+z_index = 3
+max_len = 4
