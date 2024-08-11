@@ -1,0 +1,173 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gameplay/RockSC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gameplay/RockLA.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gameplay/RockSA.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sprites/leaves/leaves-a.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/other-env/rabbit-a.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/other-env/rabbit-b.png" type="Texture" id=9]
+[ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/gameplay/Enemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/sprites/leaves/leaves-b.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/sticks/acorn.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/sticks/pinecone.png" type="Texture" id=15]
+
+[node name="Level3" type="Node2D"]
+
+[node name="StartHere" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( 441, 517 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 2382, 984 )
+rotation = 1.13599
+scale = Vector2( 1, 1 )
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 2030, 2193 )
+rotation = 2.30246
+scale = Vector2( 1, 1 )
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 725, 2559 )
+rotation = -2.70731
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 42, 1327 )
+rotation = -1.58496
+scale = Vector2( 1, 1 )
+
+[node name="Wall" parent="Walls" instance=ExtResource( 3 )]
+position = Vector2( 999, 237 )
+rotation = -0.113449
+
+[node name="Obstacles" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="RockSB" parent="Obstacles" instance=ExtResource( 6 )]
+position = Vector2( 1935, 1384 )
+rotation = 0.431268
+scale = Vector2( 2.89289, 2.08774 )
+
+[node name="RockSA" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 1713, 946 )
+rotation = -0.270267
+scale = Vector2( 2.55702, 2.20983 )
+
+[node name="RockSB2" parent="Obstacles" instance=ExtResource( 6 )]
+position = Vector2( 468, 1605 )
+rotation = 0.221534
+scale = Vector2( 2.77122, 1.9642 )
+
+[node name="RockSC2" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 675, 973 )
+rotation = -0.472815
+scale = Vector2( 5.31083, 3.47299 )
+
+[node name="RockSC" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 1474, 836 )
+rotation = -0.113449
+scale = Vector2( 3.28463, 2.84362 )
+
+[node name="RockSB3" parent="Obstacles" instance=ExtResource( 6 )]
+position = Vector2( 575, 1751 )
+rotation = 0.180462
+scale = Vector2( 4.67797, 2.52038 )
+
+[node name="RockLA2" parent="Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 811, 1890 )
+scale = Vector2( 1.87954, 1.76538 )
+
+[node name="RockLA" parent="Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 1876, 1148 )
+
+[node name="RockSC4" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 1983, 2061 )
+rotation = -0.326078
+scale = Vector2( 6.12071, 4.59054 )
+
+[node name="RockSC3" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 1077, 1967 )
+rotation = -0.0509067
+scale = Vector2( 3.00032, 2.0727 )
+
+[node name="RockLA3" parent="Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 1830, 2296 )
+scale = Vector2( -1.16901, 1.10011 )
+
+[node name="Decoration" type="Node" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Decoration"]
+position = Vector2( 1241, 1394 )
+rotation = -0.485917
+texture = ExtResource( 9 )
+
+[node name="Stuff" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="rabbet" type="Sprite" parent="Stuff"]
+position = Vector2( 1248, 1384 )
+rotation = -0.488979
+texture = ExtResource( 8 )
+script = ExtResource( 1 )
+start_decay_bites = 60
+
+[node name="DecayItem2" type="Sprite" parent="Stuff"]
+position = Vector2( 674, 2273 )
+rotation = 0.42893
+texture = ExtResource( 7 )
+script = ExtResource( 1 )
+start_decay_bites = 30
+
+[node name="DecayItem3" type="Sprite" parent="Stuff"]
+position = Vector2( 1468, 2256 )
+rotation = 3.6784
+scale = Vector2( 1, 1 )
+texture = ExtResource( 12 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem" type="Sprite" parent="Stuff"]
+position = Vector2( 2183, 1559 )
+rotation = 0.577809
+texture = ExtResource( 12 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem4" type="Sprite" parent="Stuff"]
+position = Vector2( 946, 552 )
+texture = ExtResource( 13 )
+script = ExtResource( 1 )
+start_decay_bites = 2
+
+[node name="DecayItem5" type="Sprite" parent="Stuff"]
+position = Vector2( 905, 528 )
+rotation = 1.62105
+texture = ExtResource( 15 )
+script = ExtResource( 1 )
+start_decay_bites = 2
+
+[node name="DecayItem6" type="Sprite" parent="Stuff"]
+position = Vector2( 310, 913 )
+rotation = 0.552169
+texture = ExtResource( 14 )
+script = ExtResource( 1 )
+start_decay_bites = 5
+
+[node name="Enemies" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Beetle2" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 1188, 2508 )
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 1934, 531 )
+
+[node name="Beetle" parent="Enemies" instance=ExtResource( 10 )]
+position = Vector2( 730, 1370 )
