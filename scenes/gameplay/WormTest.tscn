@@ -127,7 +127,6 @@ flip_v = true
 [node name="Worm" parent="." instance=ExtResource( 4 )]
 modulate = Color( 0.941176, 0.870588, 0.666667, 1 )
 is_player = true
-physics_based_movement = true
 
 [node name="Enemy" parent="." instance=ExtResource( 11 )]
 modulate = Color( 0.941176, 0.619608, 0.988235, 1 )

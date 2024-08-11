@@ -9,6 +9,8 @@ signal on_hit()
 
 onready var shape: CollisionPolygon2D = $Shape
 
+var map = Dictionary()
+
 func build_collider(line: PoolVector2Array):
 	# result is an array of Array[Vector2]
 	var result = Geometry.offset_polyline_2d(line, width)
@@ -18,17 +20,15 @@ func build_collider(line: PoolVector2Array):
 		emit_signal("on_hit_self")
 	else:
 		# remove overlapping points from shape
+		var path = Array()
 		for i in result[0].size():
-			for j in range(i + 1, result[0].size()):
-				if j >= result[0].size():
-					break
-				if (result[0][j] - result[0][i]).length() < 0.5:
-					result[0].remove(j)
-						
-		# set collider shape, error happens here
-		shape.polygon = PoolVector2Array(result[0])
+			if path.size() == 0 or path[path.size() - 1] != result[0][i]:
+				path.append(result[0][i])
+		
+		# set collider shape
+		shape.polygon = PoolVector2Array(path)
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	var areas = get_overlapping_areas()
 	if areas.size() > 0:
 		emit_signal("on_hit")
