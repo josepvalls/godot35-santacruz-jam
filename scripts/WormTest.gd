@@ -13,6 +13,7 @@ var eaten := 0
 var hit := 0
 var hit_self := 0
 var stuff_progress = {}
+var use_keyboard = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -85,7 +86,13 @@ func update_status():
 
 func _process(delta):
 	if is_playing:
-		$PlayerTarget.position = get_viewport().get_mouse_position() - get_viewport().size/2 + $MainCamera.position
+		var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		print(direction)
+		if use_keyboard or direction != Vector2.ZERO:
+			$PlayerTarget.position = $Worm/Head.position + direction * 1000
+			use_keyboard = true
+		else:
+			$PlayerTarget.position = get_viewport().get_mouse_position() - get_viewport().size/2 + $MainCamera.position
 		update_decaying(delta)
 		update_status()
 		update_sfx(delta)

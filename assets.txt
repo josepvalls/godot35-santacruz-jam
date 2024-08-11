@@ -1,5 +1,1 @@
-https://kenney.nl/assets/platformer-pack-redux
-https://kenney.nl/assets/platformer-art-deluxe
-https://www.rawpixel.com/image/10165075/png-white-background-plant
-https://www.rawpixel.com/image/10165127/png-plant-moon
-https://www.rawpixel.com/image/10164831/png-white-background-plant
+https://kenney.nl/assets/foliage-sprites
