@@ -34,7 +34,9 @@ text = "dsf dfds fds fds fds fds"
 autowrap = true
 
 [node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2( 0, 3 )
 current = true
+zoom = Vector2( 2, 2 )
 script = ExtResource( 8 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
