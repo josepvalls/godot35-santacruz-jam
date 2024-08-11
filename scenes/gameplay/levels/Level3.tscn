@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/RockSC.tscn" type="PackedScene" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://assets/sprites/sticks/acorn.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/sticks/pinecone.png" type="Texture" id=15]
+[ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=16]
+[ext_resource path="res://scenes/gameplay/DecayMaterial.tres" type="Material" id=17]
 
 [node name="Level3" type="Node2D"]
 
@@ -112,6 +114,7 @@ texture = ExtResource( 9 )
 unique_name_in_owner = true
 
 [node name="rabbet" type="Sprite" parent="Stuff"]
+material = ExtResource( 17 )
 position = Vector2( 1248, 1384 )
 rotation = -0.488979
 texture = ExtResource( 8 )
@@ -119,6 +122,7 @@ script = ExtResource( 1 )
 start_decay_bites = 60
 
 [node name="DecayItem2" type="Sprite" parent="Stuff"]
+material = ExtResource( 16 )
 position = Vector2( 674, 2273 )
 rotation = 0.42893
 texture = ExtResource( 7 )
@@ -126,6 +130,7 @@ script = ExtResource( 1 )
 start_decay_bites = 30
 
 [node name="DecayItem3" type="Sprite" parent="Stuff"]
+material = ExtResource( 16 )
 position = Vector2( 1468, 2256 )
 rotation = 3.6784
 scale = Vector2( 1, 1 )
@@ -134,6 +139,7 @@ script = ExtResource( 1 )
 start_decay_bites = 10
 
 [node name="DecayItem" type="Sprite" parent="Stuff"]
+material = ExtResource( 16 )
 position = Vector2( 2183, 1559 )
 rotation = 0.577809
 texture = ExtResource( 12 )
@@ -141,12 +147,14 @@ script = ExtResource( 1 )
 start_decay_bites = 10
 
 [node name="DecayItem4" type="Sprite" parent="Stuff"]
+material = ExtResource( 16 )
 position = Vector2( 946, 552 )
 texture = ExtResource( 13 )
 script = ExtResource( 1 )
 start_decay_bites = 2
 
 [node name="DecayItem5" type="Sprite" parent="Stuff"]
+material = ExtResource( 16 )
 position = Vector2( 905, 528 )
 rotation = 1.62105
 texture = ExtResource( 15 )
@@ -154,6 +162,7 @@ script = ExtResource( 1 )
 start_decay_bites = 2
 
 [node name="DecayItem6" type="Sprite" parent="Stuff"]
+material = ExtResource( 16 )
 position = Vector2( 310, 913 )
 rotation = 0.552169
 texture = ExtResource( 14 )
