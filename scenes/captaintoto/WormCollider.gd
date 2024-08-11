@@ -3,16 +3,18 @@ class_name WormCollider
 extends Area2D
 
 export var width: float = 0.75
+export var freq: int = 3
 
 signal on_hit_self()
 signal on_hit()
 
 onready var shape: CollisionPolygon2D = $Shape
-
-var map = Dictionary()
+var tick := 0
 
 func build_collider(line: PoolVector2Array):
-	# result is an array of Array[Vector2]
+	if tick % freq != 0: return
+	
+	# result is an array of PoolVector2Arrays
 	var result = Geometry.offset_polyline_2d(line, width)
 	
 	# if result is more than a single shape, then worm is overlapping itself
@@ -32,4 +34,5 @@ func _physics_process(_delta):
 	var areas = get_overlapping_areas()
 	if areas.size() > 0:
 		emit_signal("on_hit")
+	tick += 1
 	
