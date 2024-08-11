@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://scenes/gameplay/RockSA.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sprites/leaves/leaves-a.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/leaves/leaves-b.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/leaves/leaves-d.png" type="Texture" id=11]
+[ext_resource path="res://scenes/gameplay/Enemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/sprites/other-env/mushroom-a.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=14]
 
 [node name="Level2" type="Node2D"]
 position = Vector2( 961, 2945 )
@@ -23,12 +28,8 @@ position = Vector2( 1385, 4052 )
 rotation = -2.77312
 
 [node name="Wall3" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 425, 3298 )
-rotation = -1.94748
-
-[node name="Wall2" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 476, 2612 )
-rotation = -0.973742
+position = Vector2( 506, 3112 )
+rotation = -1.58788
 
 [node name="Wall10" parent="Walls" instance=ExtResource( 1 )]
 position = Vector2( 945, 1120 )
@@ -36,28 +37,13 @@ rotation = -1.74536
 scale = Vector2( 1, 1 )
 
 [node name="Wall9" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 1463, 506 )
-rotation = -0.87268
+position = Vector2( 1444, 461 )
+rotation = -0.390168
 scale = Vector2( 1, 1 )
 
 [node name="Wall8" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 2637, 461 )
-rotation = 0.371275
-scale = Vector2( 1, 1 )
-
-[node name="Wall13" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 4468, 2243 )
-rotation = 1.54262
-scale = Vector2( 1, 1 )
-
-[node name="Wall12" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 4862, 2507 )
-rotation = 3.11348
-scale = Vector2( 1, 1 )
-
-[node name="Wall11" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 4825, 1868 )
-rotation = -0.00866723
+position = Vector2( 2757, 540 )
+rotation = 0.189184
 scale = Vector2( 1, 1 )
 
 [node name="Wall7" parent="Walls" instance=ExtResource( 1 )]
@@ -66,8 +52,8 @@ rotation = 1.21099
 scale = Vector2( 1, 1 )
 
 [node name="Wall6" parent="Walls" instance=ExtResource( 1 )]
-position = Vector2( 3732, 3557 )
-rotation = 1.66755
+position = Vector2( 3740, 2708 )
+rotation = 1.59711
 scale = Vector2( 1, 1 )
 
 [node name="Wall5" parent="Walls" instance=ExtResource( 1 )]
@@ -120,16 +106,39 @@ position = Vector2( 2045, 1930 )
 rotation = 0.563957
 scale = Vector2( 1.2323, 1.1908 )
 
+[node name="RockSC2" parent="Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 2941, 1457 )
+rotation = -0.0569892
+scale = Vector2( 3.31779, 2.5267 )
+
+[node name="RockSB4" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 3165, 1922 )
+rotation = 0.0796442
+scale = Vector2( 3.94962, 2.58302 )
+
 [node name="RockSB" parent="Obstacles" instance=ExtResource( 2 )]
 position = Vector2( 2100, 2310 )
 rotation = 1.54262
 scale = Vector2( 5.33052, 5.0338 )
+
+[node name="RockLA4" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 3070, 1691 )
+rotation = -0.0680653
+scale = Vector2( 2, 2 )
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Beetle" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 2280, 2835 )
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 3228, 2341 )
+rotation = 0.130134
+scale = Vector2( 1, 1 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 2322, 1395 )
 
 [node name="Stuff" type="Node" parent="."]
 unique_name_in_owner = true
@@ -144,3 +153,52 @@ script = ExtResource( 3 )
 position = Vector2( 2193, 2658 )
 texture = ExtResource( 8 )
 script = ExtResource( 3 )
+
+[node name="DecayItem3" type="Sprite" parent="Stuff"]
+position = Vector2( 2582, 1849 )
+rotation = 2.83326
+texture = ExtResource( 10 )
+script = ExtResource( 3 )
+
+[node name="DecayItem4" type="Sprite" parent="Stuff"]
+position = Vector2( 2961, 945 )
+rotation = 1.25566
+texture = ExtResource( 11 )
+script = ExtResource( 3 )
+
+[node name="DecayItem5" type="Sprite" parent="Stuff"]
+position = Vector2( 2374, 3820 )
+rotation = 0.130134
+texture = ExtResource( 11 )
+script = ExtResource( 3 )
+
+[node name="DecayItem6" type="Sprite" parent="Stuff"]
+position = Vector2( 1784, 1000 )
+rotation = -0.469821
+texture = ExtResource( 8 )
+script = ExtResource( 3 )
+
+[node name="Decorations" type="Node" parent="."]
+
+[node name="Mushroom-a2" type="Sprite" parent="Decorations"]
+position = Vector2( 2110, 2450 )
+rotation = -0.0894641
+scale = Vector2( 0.231483, 0.252189 )
+texture = ExtResource( 13 )
+flip_h = true
+
+[node name="Mushroom-a" type="Sprite" parent="Decorations"]
+position = Vector2( 2744, 3439 )
+scale = Vector2( 0.366214, 0.439149 )
+texture = ExtResource( 13 )
+
+[node name="Mushroom-b2" type="Sprite" parent="Decorations"]
+position = Vector2( 1855, 3327 )
+rotation = 0.495558
+scale = Vector2( 0.794802, 0.911592 )
+texture = ExtResource( 14 )
+
+[node name="Mushroom-b" type="Sprite" parent="Decorations"]
+position = Vector2( 1999, 2426 )
+rotation = 0.168974
+texture = ExtResource( 14 )
