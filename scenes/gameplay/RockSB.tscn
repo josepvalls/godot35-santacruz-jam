@@ -7,8 +7,10 @@ radius = 27.5
 height = 19.0
 
 [node name="RockSB" type="StaticBody2D"]
+modulate = Color( 0.866667, 0.835294, 0.745098, 1 )
 position = Vector2( 445, 779 )
 scale = Vector2( 2, 2 )
+z_index = 2
 
 [node name="Rock1" type="Sprite" parent="."]
 position = Vector2( -2, -3 )

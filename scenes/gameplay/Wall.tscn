@@ -1,39 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://assets/sprites/bushes/bush-a.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/bushes/bush-c.png" type="Texture" id=2]
 [ext_resource path="res://scenes/gameplay/Background.gd" type="Script" id=4]
-[ext_resource path="res://assets/sprites/shaded/sprite_0091.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/shaded/sprite_0090.png" type="Texture" id=6]
-
-[sub_resource type="Gradient" id=7]
-offsets = PoolRealArray( 0.893855, 1 )
-colors = PoolColorArray( 0.137255, 0.709804, 0.227451, 1, 0.0627451, 0.290196, 0.0980392, 0 )
-
-[sub_resource type="GradientTexture2D" id=5]
-gradient = SubResource( 7 )
-width = 2048
-height = 512
-fill_from = Vector2( 0, 0.5 )
-fill_to = Vector2( 0, 1 )
-
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0.0627451, 0.290196, 0.0980392, 1, 0.0627451, 0.290196, 0.0980392, 0 )
-
-[sub_resource type="GradientTexture2D" id=3]
-gradient = SubResource( 2 )
-width = 2048
-height = 512
-fill_from = Vector2( 0, 0.5 )
-fill_to = Vector2( 0, 1 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 1024, 256 )
 
 [node name="Wall" type="Node2D"]
+z_index = 10
 script = ExtResource( 4 )
 num_random = 5
-num_homogeneous = 10
+num_homogeneous = 5
 size_h = 0
-offset = Vector2( 0, -100 )
+offset = Vector2( -100, -500 )
 color_r_mult = 0.3
 color_g_mult = 1.0
 
@@ -41,26 +21,26 @@ color_g_mult = 1.0
 margin_left = -1024.0
 margin_top = -512.0
 margin_right = 1024.0
-texture = SubResource( 5 )
 
 [node name="Leaves" type="Node2D" parent="."]
-modulate = Color( 0.137255, 0.709804, 0.227451, 1 )
+modulate = Color( 0.627451, 0.835294, 0.380392, 1 )
 
 [node name="Sprite0090" type="Sprite" parent="Leaves"]
 position = Vector2( 327, -100 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+scale = Vector2( 1.17865, 1.08761 )
+z_index = 5
+texture = ExtResource( 1 )
 
 [node name="Sprite0091" type="Sprite" parent="Leaves"]
 position = Vector2( -336, -100 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 5 )
+scale = Vector2( 0.932475, 0.850447 )
+z_index = 5
+texture = ExtResource( 2 )
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 margin_left = -1024.0
 margin_top = -512.0
 margin_right = 1024.0
-texture = SubResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
