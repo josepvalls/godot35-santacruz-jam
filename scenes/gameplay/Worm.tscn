@@ -31,9 +31,11 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="WormCollider" parent="." instance=ExtResource( 4 )]
+[node name="WormCollider" parent="." groups=["player_parts"] instance=ExtResource( 4 )]
+collision_layer = 3
 
-[node name="Head" type="KinematicBody2D" parent="."]
+[node name="Head" type="KinematicBody2D" parent="." groups=["player_parts"]]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
 shape = SubResource( 1 )

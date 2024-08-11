@@ -8,7 +8,8 @@ export var speed := 256
 export var rotate_speed := PI * 4
 export var follow_margin := 32
 export var is_player := false
-export var physics_based_movement := false
+export var has_body := true
+export var physics_based_movement := true
 export var momentum_based_movement := true
 
 var start_position := Vector2.ZERO
@@ -20,6 +21,9 @@ var body: Line2D = null
 var outline: Line2D = null
 var collider: WormCollider = null
 var body_points := []
+var immunity_timeout := 0.5
+var immunity_elapsed := 0.0
+var original_color := Color.white
 
 
 signal moved(point)
@@ -28,26 +32,41 @@ signal on_hit_self()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	body = $Body
 	head = $Head
-	outline = $Outline
-	collider = $WormCollider
-	if is_player and collider != null:
-		collider.connect("on_hit_self", self, "on_hit_self")
-		collider.connect("on_hit", self, "on_hit")
+	if has_body:
+		body = $Body
+		outline = $Outline
+	if is_player:
+		collider = $WormCollider
+		if collider != null:
+			collider.connect("on_hit_self", self, "on_hit_self")
+			collider.connect("on_hit", self, "on_hit")
 
 func start(active_: bool = true, moving_: bool = true):
-	head.position = start_position
+	head.position = position
+	position = Vector2.ZERO
 	body_points = [head.position]
-	body.points = body_points
+	var radius := 0.0
+	var delta := PI/2
+	for i in max_len:
+		radius += point_delta * 0.2
+		delta += .6
+		body_points.append(head.position + Vector2(cos(delta)*radius, sin(delta)*radius))
+	if body:
+		body.points = body_points
+		outline.points = body_points
 	active = active_
 	moving = moving_
+	original_color = modulate
+	post_start()
+	
+func post_start():
+	pass
 	
 func _input(event):
 	# trying to test the self-hit recovery
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
 		moving = true
-
 
 
 
@@ -72,31 +91,47 @@ func _physics_process(delta):
 					head.position += head.position.direction_to(point) * speed * delta
 				else:
 					head.position += Vector2.RIGHT.rotated(actual_rotation) * speed * delta
-			var points := body_points.duplicate()
-			if head.position.distance_to(body_points[0]) >= point_delta:
-				emit_signal("moved", head.position)
-				points.push_front(head.position)
-				while len(points) > max_len:
-					points.pop_back()
-				body_points = points
-				body.points = points
-				outline.points = points
-				
-			else:
-				points.push_front(head.position)
-				body.points = points
+			if body:
+				var points := body_points.duplicate()
+				if head.position.distance_to(body_points[0]) >= point_delta:
+					if is_player:
+						emit_signal("moved", head.position)
+					points.push_front(head.position)
+					while len(points) > max_len:
+						points.pop_back()
+					body_points = points
+					body.points = points
+					outline.points = points
+					
+				else:
+					points.push_front(head.position)
+					body.points = points
 
-			if collider != null:
-				collider.build_collider(body.points)
+				if collider != null:
+					collider.build_collider(body.points)
+	custom_physics(delta)
+	
+func custom_physics(delta):
+	pass
 	
 func on_hit_self():
 	emit_signal("on_hit_self")
 	# moving = false
 	# game_over()
 
+func _process(delta):
+	if immunity_elapsed > 0.0:
+		immunity_elapsed -= delta
+		var immunity_flash = clamp(immunity_elapsed/immunity_timeout, 0, 1)
+		modulate = lerp(original_color, Color(1,0,0,1), immunity_flash)
+
 func on_hit():
-	emit_signal("on_hit")
-	# game_over()
+	if immunity_elapsed > 0.0:
+		pass
+	else:
+		immunity_elapsed = immunity_timeout
+		emit_signal("on_hit")
+		# game_over()
 
 
 func game_over():

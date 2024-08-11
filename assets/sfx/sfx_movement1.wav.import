@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_movement1.wav-976b600a1f7e82a93c481b4dfb2de56e.sample"
+
+[deps]
+
+source_file="res://assets/sfx/sfx_movement1.wav"
+dest_files=[ "res://.import/sfx_movement1.wav-976b600a1f7e82a93c481b4dfb2de56e.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

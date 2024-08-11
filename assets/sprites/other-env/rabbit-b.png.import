@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barnacle.png-3282c495f2b985d5d60f8f8553c1a8be.stex"
+path="res://.import/rabbit-b.png-c9c9ee0f0bb6ce6423ddcdfc73744ae6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/worm/barnacle.png"
-dest_files=[ "res://.import/barnacle.png-3282c495f2b985d5d60f8f8553c1a8be.stex" ]
+source_file="res://assets/sprites/other-env/rabbit-b.png"
+dest_files=[ "res://.import/rabbit-b.png-c9c9ee0f0bb6ce6423ddcdfc73744ae6.stex" ]
 
 [params]
 
