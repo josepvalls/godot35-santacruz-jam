@@ -12,95 +12,83 @@
 [ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=10]
 
 [node name="Level1" type="Node2D"]
+position = Vector2( 545, 2543 )
 
 [node name="Backgrounds" type="Node" parent="."]
 
 [node name="Background2" parent="Backgrounds" instance=ExtResource( 8 )]
-position = Vector2( 554, -2011 )
+position = Vector2( 1099, 532 )
 
 [node name="Background" parent="Backgrounds" instance=ExtResource( 8 )]
-position = Vector2( 519, 37 )
+position = Vector2( 1064, 2580 )
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 529, -2091 )
+position = Vector2( 1074, 452 )
 
 [node name="Walls" type="Node" parent="."]
 
 [node name="Wall2" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 492, 614 )
+position = Vector2( 1037, 3157 )
 rotation = 3.14159
 
-[node name="Wall5" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( -786, -1077 )
-rotation = -2.41905
-
-[node name="Wall4" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 1745, -1136 )
-rotation = 2.30817
-
 [node name="Wall3" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 1043, 638 )
+position = Vector2( 1588, 3181 )
 rotation = 1.5708
 
 [node name="Wall9" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( -50, -2065 )
+position = Vector2( 495, 478 )
 rotation = -0.506995
 scale = Vector2( 1, 1 )
 
-[node name="Wall10" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 591, -2397 )
-rotation = 0.00666046
-scale = Vector2( 1, 1 )
-
 [node name="Wall8" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 1302, -2057 )
+position = Vector2( 1847, 486 )
 rotation = 0.557584
 scale = Vector2( 1, 1 )
 
 [node name="Wall7" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 1503, -1336 )
-rotation = 1.57859
+position = Vector2( 2099, 1349 )
+rotation = 2.09546
 scale = Vector2( 1, 1 )
 
 [node name="Wall6" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( -413, -1389 )
-rotation = -1.57359
+position = Vector2( 166, 1233 )
+rotation = -1.93755
 scale = Vector2( 1, 1 )
 
 [node name="Wall" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( -14, 626 )
+position = Vector2( 531, 3169 )
 rotation = -1.5708
 
 [node name="Obstacles" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="RockSA" parent="Obstacles" instance=ExtResource( 4 )]
-position = Vector2( 535, -1360 )
+position = Vector2( 1080, 1183 )
 scale = Vector2( 5.30602, 4.86721 )
 
 [node name="Stuff" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="DecayItem" type="Sprite" parent="Stuff"]
-position = Vector2( 522, -101 )
+position = Vector2( 1067, 2442 )
 texture = ExtResource( 5 )
 script = ExtResource( 1 )
 
 [node name="DecayItem2" type="Sprite" parent="Stuff"]
-position = Vector2( 1105, -891 )
+position = Vector2( 1650, 1652 )
 texture = ExtResource( 7 )
 script = ExtResource( 1 )
 
 [node name="DecayItem3" type="Sprite" parent="Stuff"]
-position = Vector2( -182, -1295 )
+position = Vector2( 363, 1248 )
 texture = ExtResource( 6 )
 script = ExtResource( 1 )
 
 [node name="DecayItem4" type="Sprite" parent="Stuff"]
-position = Vector2( 1170, -1847 )
+position = Vector2( 1715, 696 )
 texture = ExtResource( 6 )
 script = ExtResource( 1 )
 
@@ -111,25 +99,25 @@ position = Vector2( 521, 414 )
 [node name="Decorations" type="Node" parent="."]
 
 [node name="Mushroom-a" type="Sprite" parent="Decorations"]
-position = Vector2( 406, -1203 )
+position = Vector2( 951, 1340 )
 rotation = 0.31385
 scale = Vector2( 0.384447, 0.450167 )
 texture = ExtResource( 9 )
 
 [node name="Mushroom-a2" type="Sprite" parent="Decorations"]
-position = Vector2( 1408, -848 )
+position = Vector2( 1985, 1421 )
 rotation = -0.29494
 scale = Vector2( 0.434988, 0.596382 )
 texture = ExtResource( 9 )
 flip_h = true
 
 [node name="Mushroom-b2" type="Sprite" parent="Decorations"]
-position = Vector2( 99, 518 )
+position = Vector2( 644, 3061 )
 rotation = 0.477665
 scale = Vector2( 1.50536, 1.40468 )
 texture = ExtResource( 10 )
 
 [node name="Mushroom-b" type="Sprite" parent="Decorations"]
-position = Vector2( -49, -487 )
+position = Vector2( 496, 2056 )
 rotation = 0.238832
 texture = ExtResource( 10 )

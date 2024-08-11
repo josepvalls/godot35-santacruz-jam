@@ -1,0 +1,146 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=3]
+[ext_resource path="res://scenes/gameplay/RockSC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gameplay/RockLA.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/gameplay/RockSA.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sprites/leaves/leaves-a.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=9]
+
+[node name="Level2" type="Node2D"]
+position = Vector2( 961, 2945 )
+
+[node name="StartHere" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1385, 4052 )
+rotation = -2.77312
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 425, 3298 )
+rotation = -1.94748
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 476, 2612 )
+rotation = -0.973742
+
+[node name="Wall10" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 945, 1120 )
+rotation = -1.74536
+scale = Vector2( 1, 1 )
+
+[node name="Wall9" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 1463, 506 )
+rotation = -0.87268
+scale = Vector2( 1, 1 )
+
+[node name="Wall8" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2637, 461 )
+rotation = 0.371275
+scale = Vector2( 1, 1 )
+
+[node name="Wall13" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 4468, 2243 )
+rotation = 1.54262
+scale = Vector2( 1, 1 )
+
+[node name="Wall12" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 4862, 2507 )
+rotation = 3.11348
+scale = Vector2( 1, 1 )
+
+[node name="Wall11" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 4825, 1868 )
+rotation = -0.00866723
+scale = Vector2( 1, 1 )
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 3429, 919.999 )
+rotation = 1.21099
+scale = Vector2( 1, 1 )
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 3732, 3557 )
+rotation = 1.66755
+scale = Vector2( 1, 1 )
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 2931, 3924 )
+rotation = 2.59164
+
+[node name="Wall" parent="Walls" instance=ExtResource( 1 )]
+position = Vector2( 959, 2410 )
+
+[node name="Obstacles" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="RockSB2" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 1787, 1866 )
+rotation = 3.08358
+scale = Vector2( 6.41419, -4.08843 )
+
+[node name="RockSA" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 1344, 1741 )
+rotation = 1.32282
+scale = Vector2( 5.9963, 7.14195 )
+
+[node name="RockSC" parent="Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 1618, 3153 )
+rotation = 3.46343
+scale = Vector2( 6.40888, -4.36353 )
+
+[node name="RockLA3" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 3194, 3058 )
+rotation = -0.518625
+scale = Vector2( -1.80855, 1.42343 )
+
+[node name="RockSB3" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 2619, 3432 )
+rotation = -0.207545
+scale = Vector2( 4.06266, 2.85384 )
+
+[node name="RockLA2" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 2912, 3237 )
+rotation = -0.207545
+scale = Vector2( 2.78259, 2.68969 )
+
+[node name="RockSA2" parent="Obstacles" instance=ExtResource( 7 )]
+position = Vector2( 2086, 2067 )
+rotation = 0.563957
+scale = Vector2( 2.46461, 2.38161 )
+
+[node name="RockLA" parent="Obstacles" instance=ExtResource( 5 )]
+position = Vector2( 2045, 1930 )
+rotation = 0.563957
+scale = Vector2( 1.2323, 1.1908 )
+
+[node name="RockSB" parent="Obstacles" instance=ExtResource( 2 )]
+position = Vector2( 2100, 2310 )
+rotation = 1.54262
+scale = Vector2( 5.33052, 5.0338 )
+
+[node name="Enemies" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Beetle" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 2280, 2835 )
+
+[node name="Stuff" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="DecayItem" type="Sprite" parent="Stuff"]
+position = Vector2( 1140, 3398 )
+rotation = 0.978632
+texture = ExtResource( 9 )
+script = ExtResource( 3 )
+
+[node name="DecayItem2" type="Sprite" parent="Stuff"]
+position = Vector2( 2193, 2658 )
+texture = ExtResource( 8 )
+script = ExtResource( 3 )
