@@ -119,7 +119,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="MadeByLabel" type="Label" parent="Credits"]
-margin_right = 131.0
+margin_right = 132.0
 margin_bottom = 17.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -128,17 +128,17 @@ align = 2
 
 [node name="Developer1" type="Label" parent="Credits"]
 margin_top = 21.0
-margin_right = 131.0
+margin_right = 132.0
 margin_bottom = 46.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "jvalls"
+text = "Josep Valls"
 align = 2
 
 [node name="Developer2" type="Label" parent="Credits"]
 margin_top = 50.0
-margin_right = 131.0
+margin_right = 132.0
 margin_bottom = 75.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -148,7 +148,7 @@ align = 2
 
 [node name="Developer3" type="Label" parent="Credits"]
 margin_top = 79.0
-margin_right = 131.0
+margin_right = 132.0
 margin_bottom = 104.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -158,7 +158,7 @@ align = 2
 
 [node name="Developer4" type="Label" parent="Credits"]
 margin_top = 108.0
-margin_right = 131.0
+margin_right = 132.0
 margin_bottom = 133.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )

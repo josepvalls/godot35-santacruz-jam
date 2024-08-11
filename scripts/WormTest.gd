@@ -87,7 +87,6 @@ func update_status():
 func _process(delta):
 	if is_playing:
 		var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		print(direction)
 		if use_keyboard or direction != Vector2.ZERO:
 			$PlayerTarget.position = $Worm/Head.position + direction * 1000
 			use_keyboard = true
