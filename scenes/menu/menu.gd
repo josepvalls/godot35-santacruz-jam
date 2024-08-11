@@ -13,6 +13,7 @@ func _ready():
 
 func _on_PlayButton_pressed() -> void:
 	var params = {
+		show_progress_bar = true
 	}
 	Game.change_scene("res://scenes/gameplay/gameplay.tscn", params)
 
