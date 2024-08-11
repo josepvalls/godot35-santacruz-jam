@@ -1,18 +1,32 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/fonts/open-sans/open-sans-bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/sprites/ui/title.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/tegaki-zatsu/851tegaki_zatsu_0872.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=4]
 [ext_resource path="res://scenes/menu/menu.gd" type="Script" id=5]
+[ext_resource path="res://scenes/menu/PlayButton.gd" type="Script" id=6]
+[ext_resource path="res://assets/sprites/leaves/leaves-c-button-hover.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=5]
-size = 60
-font_data = ExtResource( 4 )
+size = 42
+outline_size = 6
+font_data = ExtResource( 3 )
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Label
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=2]
+size = 28
+font_data = ExtResource( 3 )
 
-"
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 3 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -27,79 +41,70 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.176471, 0.682353, 0.647059, 1 )
+color = Color( 0.933333, 0.933333, 0.933333, 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -339.0
 
-[node name="Title" type="Label" parent="CenterContainer"]
-margin_left = 145.0
-margin_top = 89.0
-margin_right = 878.0
-margin_bottom = 172.0
-custom_fonts/font = SubResource( 5 )
-text = "Godot Game Template"
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Title" type="Sprite" parent="CenterContainer"]
+position = Vector2( 513.5, 192 )
+scale = Vector2( 0.771, 0.758 )
+texture = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -34.0
-margin_right = 100.0
-margin_bottom = 130.0
+margin_left = -130.0
+margin_top = 16.0
+margin_right = 130.0
+margin_bottom = 272.0
 custom_constants/separation = 16
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-margin_right = 200.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 200, 70 )
-focus_neighbour_bottom = NodePath("../ExitButton")
-focus_next = NodePath("../ExitButton")
-text = "START"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 256.0
+texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 7 )
+script = ExtResource( 6 )
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
-margin_top = 86.0
-margin_right = 200.0
-margin_bottom = 156.0
-rect_min_size = Vector2( 200, 70 )
-focus_neighbour_top = NodePath("../PlayButton")
-focus_previous = NodePath("../PlayButton")
-text = "EXIT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Label" type="Label" parent="VBoxContainer/PlayButton"]
+margin_left = -1.0
+margin_top = 88.0
+margin_right = 263.0
+margin_bottom = 160.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.933333, 0.933333, 0.933333, 0.933333 )
+custom_fonts/font = SubResource( 5 )
+text = "start"
+align = 1
+valign = 1
 
 [node name="Version" type="VBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -90.0
-margin_right = 198.0
-margin_bottom = -18.0
+margin_left = 8.0
+margin_top = -72.0
+margin_right = 240.0
+margin_bottom = -8.0
 
 [node name="GameVersion" type="Label" parent="Version"]
-margin_right = 182.0
-margin_bottom = 34.0
+margin_right = 232.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "<x.y.z>"
 
 [node name="GodotVersion" type="Label" parent="Version"]
-margin_top = 38.0
-margin_right = 182.0
-margin_bottom = 72.0
-custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
+margin_top = 29.0
+margin_right = 232.0
+margin_bottom = 58.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "<GodotVersion>"
-script = SubResource( 1 )
 
 [node name="Credits" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -114,36 +119,51 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="MadeByLabel" type="Label" parent="Credits"]
-margin_right = 243.0
-margin_bottom = 34.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+margin_right = 131.0
+margin_bottom = 17.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "made by:"
+align = 2
 
 [node name="Developer1" type="Label" parent="Credits"]
-margin_top = 38.0
-margin_right = 243.0
-margin_bottom = 72.0
+margin_top = 21.0
+margin_right = 131.0
+margin_bottom = 46.0
 grow_horizontal = 0
-custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
-text = "Crystal Bit community"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "jvalls"
+align = 2
 
 [node name="Developer2" type="Label" parent="Credits"]
-visible = false
-margin_top = 86.0
-margin_right = 157.0
-margin_bottom = 125.0
+margin_top = 50.0
+margin_right = 131.0
+margin_bottom = 75.0
 grow_horizontal = 0
-custom_colors/font_color = Color( 0.886275, 0.87451, 0.87451, 1 )
-text = "Developer 2"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "atumemot"
+align = 2
 
 [node name="Developer3" type="Label" parent="Credits"]
-visible = false
-margin_top = 129.0
-margin_right = 157.0
-margin_bottom = 168.0
+margin_top = 79.0
+margin_right = 131.0
+margin_bottom = 104.0
 grow_horizontal = 0
-custom_colors/font_color = Color( 0.886275, 0.87451, 0.87451, 1 )
-text = "Developer 3"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "ch3ckpoint"
+align = 2
+
+[node name="Developer4" type="Label" parent="Credits"]
+margin_top = 108.0
+margin_right = 131.0
+margin_bottom = 133.0
+grow_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "N.S. Dawn"
+align = 2
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
