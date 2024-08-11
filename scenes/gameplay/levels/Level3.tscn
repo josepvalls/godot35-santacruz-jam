@@ -121,6 +121,14 @@ texture = ExtResource( 8 )
 script = ExtResource( 1 )
 start_decay_bites = 60
 
+[node name="DecayItem7" type="Sprite" parent="Stuff"]
+material = ExtResource( 16 )
+position = Vector2( 1798, 561 )
+rotation = 0.58665
+texture = ExtResource( 7 )
+script = ExtResource( 1 )
+start_decay_bites = 30
+
 [node name="DecayItem2" type="Sprite" parent="Stuff"]
 material = ExtResource( 16 )
 position = Vector2( 674, 2273 )
@@ -180,3 +188,9 @@ position = Vector2( 1934, 531 )
 
 [node name="Beetle" parent="Enemies" instance=ExtResource( 10 )]
 position = Vector2( 730, 1370 )
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 1651, 332 )
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 11 )]
+position = Vector2( 1578, 1731 )
