@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=16]
 [ext_resource path="res://assets/sprites/other-env/frog-b.png" type="Texture" id=17]
 [ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/sprites/other-env/snek-b.png" type="Texture" id=19]
 
 [node name="Level4" type="Node2D"]
 
@@ -162,8 +163,9 @@ rotation = -1.02837
 texture = ExtResource( 15 )
 
 [node name="snakeskel" type="Sprite" parent="Decorations"]
-position = Vector2( 2089, 2623 )
+position = Vector2( 2054, 2590 )
 rotation = -0.000773025
+texture = ExtResource( 19 )
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
