@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/menu/LevelAdvanceMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/tegaki-zatsu/851tegaki_zatsu_0872.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/leaves/leaves-c-button-hover.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_size = 4
+font_data = ExtResource( 2 )
+
+[node name="LevelAdvanceMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.933333, 0.933333, 0.933333, 0.301961 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 192.0
+margin_right = 832.0
+margin_bottom = 600.0
+alignment = 1
+
+[node name="LevelComplete" type="Label" parent="VBoxContainer"]
+margin_top = 93.0
+margin_right = 640.0
+margin_bottom = 157.0
+custom_fonts/font = SubResource( 1 )
+text = "Level X Complete!"
+align = 1
+valign = 1
+
+[node name="Tagline" type="Label" parent="VBoxContainer"]
+margin_top = 161.0
+margin_right = 640.0
+margin_bottom = 194.0
+custom_fonts/font = SubResource( 2 )
+text = "Everything decayed away!"
+align = 1
+valign = 1
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+margin_top = 198.0
+margin_right = 640.0
+margin_bottom = 247.0
+custom_fonts/font = SubResource( 3 )
+text = "Score: 42"
+align = 1
+valign = 1
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+margin_top = 251.0
+margin_right = 640.0
+margin_bottom = 507.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureButton"]
+margin_left = 64.0
+margin_top = 69.0
+margin_right = 208.0
+margin_bottom = 173.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.933333, 0.933333, 0.933333, 0.933333 )
+custom_fonts/font = SubResource( 4 )
+text = "next"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
