@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/other-env/mushroom-a.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=10]
+[ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=11]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 545, 2543 )
@@ -73,24 +74,32 @@ scale = Vector2( 5.30602, 4.86721 )
 unique_name_in_owner = true
 
 [node name="DecayItem" type="Sprite" parent="Stuff"]
+material = ExtResource( 11 )
 position = Vector2( 1067, 2442 )
 texture = ExtResource( 5 )
 script = ExtResource( 1 )
+start_decay_bites = 30
 
 [node name="DecayItem2" type="Sprite" parent="Stuff"]
+material = ExtResource( 11 )
 position = Vector2( 1650, 1652 )
 texture = ExtResource( 7 )
 script = ExtResource( 1 )
+start_decay_bites = 10
 
 [node name="DecayItem3" type="Sprite" parent="Stuff"]
+material = ExtResource( 11 )
 position = Vector2( 363, 1248 )
 texture = ExtResource( 6 )
 script = ExtResource( 1 )
+start_decay_bites = 5
 
 [node name="DecayItem4" type="Sprite" parent="Stuff"]
+material = ExtResource( 11 )
 position = Vector2( 1715, 696 )
 texture = ExtResource( 6 )
 script = ExtResource( 1 )
+start_decay_bites = 5
 
 [node name="StartHere" type="Node2D" parent="."]
 unique_name_in_owner = true
