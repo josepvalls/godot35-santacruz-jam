@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/gameplay/Background.gd" type="Script" id=4]
+[ext_resource path="res://assets/sprites/shaded/sprite_0091.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/shaded/sprite_0090.png" type="Texture" id=6]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.893855, 1 )
+colors = PoolColorArray( 0.137255, 0.709804, 0.227451, 1, 0.0627451, 0.290196, 0.0980392, 0 )
+
+[sub_resource type="GradientTexture2D" id=5]
+gradient = SubResource( 7 )
+width = 2048
+height = 512
+fill_from = Vector2( 0, 0.5 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.0627451, 0.290196, 0.0980392, 1, 0.0627451, 0.290196, 0.0980392, 0 )
+
+[sub_resource type="GradientTexture2D" id=3]
+gradient = SubResource( 2 )
+width = 2048
+height = 512
+fill_from = Vector2( 0, 0.5 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1024, 256 )
+
+[node name="Wall" type="Node2D"]
+script = ExtResource( 4 )
+num_random = 5
+num_homogeneous = 10
+size_h = 0
+offset = Vector2( 0, -100 )
+color_r_mult = 0.3
+color_g_mult = 1.0
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = -1024.0
+margin_top = -512.0
+margin_right = 1024.0
+texture = SubResource( 5 )
+
+[node name="Leaves" type="Node2D" parent="."]
+modulate = Color( 0.137255, 0.709804, 0.227451, 1 )
+
+[node name="Sprite0090" type="Sprite" parent="Leaves"]
+position = Vector2( 327, -100 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="Sprite0091" type="Sprite" parent="Leaves"]
+position = Vector2( -336, -100 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -1024.0
+margin_top = -512.0
+margin_right = 1024.0
+texture = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, -256 )
+shape = SubResource( 6 )

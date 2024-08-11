@@ -1,27 +1,43 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/gameplay/Worm.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/worm/worm_body_gray.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/worm/worm_head_gray.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/character_sprites/worm_head_gray.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/character_sprites/worm_body_gray.png" type="Texture" id=3]
 [ext_resource path="res://scenes/captaintoto/WormCollider.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 20.025
 
 [node name="Worm" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Body" type="Line2D" parent="."]
+[node name="Outline" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 243, 326, 353, 218, 462, 367, 609, 517, 741, 313 )
-width = 20.0
-default_color = Color( 0.980392, 0.901961, 0.658824, 1 )
-texture = ExtResource( 2 )
+width = 34.0
+default_color = Color( 0, 0, 0, 1 )
+texture = ExtResource( 3 )
 texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Head" type="Sprite" parent="."]
-position = Vector2( -2.3125, -2.3125 )
-scale = Vector2( 0.254883, 0.254883 )
+[node name="Body" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 243, 326, 353, 218, 462, 367, 609, 517, 741, 313 )
+width = 28.0
+default_color = Color( 1, 1, 1, 1 )
 texture = ExtResource( 3 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="WormCollider" parent="." instance=ExtResource( 4 )]
-width = 6.0
+
+[node name="Head" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource( 1 )
+
+[node name="Head" type="Sprite" parent="Head"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
