@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/RockSC.tscn" type="PackedScene" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=16]
 [ext_resource path="res://scenes/gameplay/DecayMaterial.tres" type="Material" id=17]
 [ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/sprites/other-env/mushroom-a.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/sticks/twigs.png" type="Texture" id=20]
 
 [node name="Level3" type="Node2D"]
 
@@ -119,6 +121,43 @@ position = Vector2( 1830, 2296 )
 scale = Vector2( -1.16901, 1.10011 )
 
 [node name="Decoration" type="Node" parent="."]
+
+[node name="Mushroom-a2" type="Sprite" parent="Decoration"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 1880, 1421 )
+rotation = 0.562148
+scale = Vector2( 0.21508, 0.261876 )
+z_index = 2
+texture = ExtResource( 19 )
+
+[node name="Mushroom-a3" type="Sprite" parent="Decoration"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 1835, 1424 )
+rotation = 2.96018
+scale = Vector2( 0.126572, -0.161118 )
+z_index = 2
+texture = ExtResource( 19 )
+
+[node name="Mushroom-a" type="Sprite" parent="Decoration"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 592, 1828 )
+rotation = -9.12249e-05
+scale = Vector2( 0.268969, 0.371922 )
+z_index = 2
+texture = ExtResource( 19 )
+
+[node name="Twigs2" type="Sprite" parent="Decoration"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 1181, 877 )
+z_index = 5
+texture = ExtResource( 20 )
+flip_h = true
+
+[node name="Twigs" type="Sprite" parent="Decoration"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 1079, 994 )
+z_index = 5
+texture = ExtResource( 20 )
 
 [node name="Sprite" type="Sprite" parent="Decoration"]
 modulate = Color( 0.866667, 0.866667, 0.866667, 1 )
