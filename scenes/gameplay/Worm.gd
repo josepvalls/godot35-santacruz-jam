@@ -13,10 +13,11 @@ export var momentum_based_movement := true
 
 var start_position := Vector2.ZERO
 var active := false
-var moving := false
+export var moving := false
 var target: Node2D = null
 var head: Node2D = null
 var body: Line2D = null
+var outline: Line2D = null
 var collider: WormCollider = null
 var body_points := []
 
@@ -29,17 +30,18 @@ signal on_hit_self()
 func _ready():
 	body = $Body
 	head = $Head
+	outline = $Outline
 	collider = $WormCollider
 	if is_player and collider != null:
 		collider.connect("on_hit_self", self, "on_hit_self")
 		collider.connect("on_hit", self, "on_hit")
 
-func start():
+func start(active_: bool = true, moving_: bool = true):
 	head.position = start_position
 	body_points = [head.position]
 	body.points = body_points
-	active = true
-	moving = true
+	active = active_
+	moving = moving_
 	
 func _input(event):
 	# trying to test the self-hit recovery
@@ -78,6 +80,8 @@ func _physics_process(delta):
 					points.pop_back()
 				body_points = points
 				body.points = points
+				outline.points = points
+				
 			else:
 				points.push_front(head.position)
 				body.points = points

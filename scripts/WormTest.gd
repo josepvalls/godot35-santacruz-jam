@@ -11,12 +11,12 @@ var hit_self := 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	status_label = $CanvasLayer/Label
-	$Worm.start_position = get_viewport().size / 2
+	$Worm.start_position = $PlayerPosition2D.position
 	$Worm.target = $PlayerTarget
 	$Worm.connect("moved", self, "moved")
 	$Worm.connect("on_hit", self, "on_hit")
 	$Worm.connect("on_hit_self", self, "on_hit_self")
-	$Worm.start()
+	$Worm.start(true, false)
 	
 	$Enemy.target = $PlayerTarget
 	$Enemy.start_position = get_viewport().size / 3
@@ -70,13 +70,7 @@ func moved(point: Vector2):
 	
 func check_eating(point: Vector2) -> bool:
 	var eating_something = false
-	# check if we already ate here
-	if $EatenSprite.is_pixel_opaque($EatenSprite.to_local(point)):
-		prints(point, "already eaten")
-	else:
-		print("not eaten")
-		#eating = "Something already eaten"
-		#return false
+	# TODO check if we already ate here
 	for item_ in $"%Stuff".get_children():
 		var item: Sprite = item_
 		if item.get_rect().has_point(item.to_local(point)):
@@ -84,8 +78,8 @@ func check_eating(point: Vector2) -> bool:
 				eating = item.name
 				var eaten_amount := item.modulate.r
 				if eaten_amount > 0.0:
-					eaten_amount = clamp(eaten_amount-.05, 0.0, 1.0)
-					item.modulate = Color(eaten_amount,eaten_amount,eaten_amount,1.0)
+					#eaten_amount = clamp(eaten_amount-.05, 0.0, 1.0)
+					#item.modulate = Color(eaten_amount,eaten_amount,eaten_amount,1.0)
 					eating_something = true
 					$Worm.max_len += 1
 				else:
