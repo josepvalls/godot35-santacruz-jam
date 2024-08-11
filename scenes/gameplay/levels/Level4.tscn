@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=2]
@@ -19,8 +19,29 @@
 [ext_resource path="res://assets/sprites/other-env/frog-b.png" type="Texture" id=17]
 [ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/sprites/other-env/snek-b.png" type="Texture" id=19]
+[ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=20]
 
 [node name="Level4" type="Node2D"]
+
+[node name="Backgrounds" type="Node" parent="."]
+
+[node name="Background2" parent="Backgrounds" instance=ExtResource( 20 )]
+position = Vector2( 2171, 725 )
+
+[node name="Background3" parent="Backgrounds" instance=ExtResource( 20 )]
+position = Vector2( 254, 2771 )
+
+[node name="Background4" parent="Backgrounds" instance=ExtResource( 20 )]
+position = Vector2( 2302, 2770 )
+
+[node name="Background5" parent="Backgrounds" instance=ExtResource( 20 )]
+position = Vector2( 4214, 726 )
+
+[node name="Background6" parent="Backgrounds" instance=ExtResource( 20 )]
+position = Vector2( 4350, 2774 )
+
+[node name="Background" parent="Backgrounds" instance=ExtResource( 20 )]
+position = Vector2( 123, 725 )
 
 [node name="StartHere" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -147,73 +168,63 @@ rotation = -0.710592
 [node name="Decorations" type="Node" parent="."]
 
 [node name="frogskel2" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
 position = Vector2( 2676, 695 )
 rotation = -0.794732
 scale = Vector2( 1, 1 )
+z_index = 3
 texture = ExtResource( 17 )
 
 [node name="frogskel" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
 position = Vector2( 928, 1144 )
 rotation = 2.74423
+z_index = 3
 texture = ExtResource( 17 )
 
 [node name="rabbitskel" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
 position = Vector2( 3490, 1645 )
 rotation = -1.02837
+z_index = 3
 texture = ExtResource( 15 )
 
 [node name="snakeskel" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
 position = Vector2( 2054, 2590 )
 rotation = -0.000773025
+z_index = 3
 texture = ExtResource( 19 )
-
-[node name="Enemies" type="Node" parent="."]
-unique_name_in_owner = true
-
-[node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 3300, 1360 )
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 3781, 1597 )
-
-[node name="Beetle" parent="Enemies" instance=ExtResource( 18 )]
-position = Vector2( 620, 1275 )
-
-[node name="Beetle2" parent="Enemies" instance=ExtResource( 18 )]
-position = Vector2( 2446, 2377 )
-
-[node name="Beetle3" parent="Enemies" instance=ExtResource( 18 )]
-position = Vector2( 3069, 720 )
-
-[node name="Enemy3" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 1607, 2745 )
-
-[node name="Enemy4" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 539, 2186 )
 
 [node name="Stuff" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="snek" type="Sprite" parent="Stuff"]
+modulate = Color( 0.580392, 0.611765, 0.8, 1 )
 material = ExtResource( 13 )
 position = Vector2( 2076, 2604 )
+z_index = 3
 texture = ExtResource( 12 )
 script = ExtResource( 1 )
 start_decay_bites = 100
 
 [node name="frog2" type="Sprite" parent="Stuff"]
+modulate = Color( 0.560784, 0.764706, 0.466667, 1 )
 material = ExtResource( 13 )
 position = Vector2( 2675, 692 )
 rotation = -0.778148
 scale = Vector2( 1, 1 )
+z_index = 3
 texture = ExtResource( 14 )
 script = ExtResource( 1 )
 start_decay_bites = 40
 
 [node name="frog" type="Sprite" parent="Stuff"]
+modulate = Color( 0.560784, 0.764706, 0.466667, 1 )
 material = ExtResource( 13 )
 position = Vector2( 929, 1146 )
 rotation = 2.75252
+z_index = 3
 texture = ExtResource( 14 )
 script = ExtResource( 1 )
 start_decay_bites = 40
@@ -221,63 +232,117 @@ start_decay_bites = 40
 [node name="rabbit" type="Sprite" parent="Stuff"]
 position = Vector2( 3500, 1641 )
 rotation = -0.98283
+z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 1 )
 start_decay_bites = 60
 
 [node name="DecayItem7" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 3067, 2671 )
 rotation = 1.59336
+z_index = 3
 texture = ExtResource( 11 )
 script = ExtResource( 1 )
 start_decay_bites = 10
 
 [node name="DecayItem2" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 2354, 1359 )
 rotation = -0.0266565
+z_index = 3
 texture = ExtResource( 11 )
 script = ExtResource( 1 )
 start_decay_bites = 10
 
 [node name="DecayItem" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 2014, 1293 )
 rotation = -3.01008
+z_index = 3
 texture = ExtResource( 11 )
 script = ExtResource( 1 )
 start_decay_bites = 10
 
 [node name="DecayItem6" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 1934, 454 )
 rotation = -0.22247
+z_index = 3
 texture = ExtResource( 8 )
 script = ExtResource( 1 )
 start_decay_bites = 30
 
 [node name="DecayItem3" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 780, 2569 )
 rotation = 0.0666817
+z_index = 3
 texture = ExtResource( 8 )
 script = ExtResource( 1 )
 start_decay_bites = 30
 
 [node name="DecayItem5" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 736, 1729 )
 rotation = 1.29845
 scale = Vector2( 1, 1 )
+z_index = 3
 texture = ExtResource( 9 )
 script = ExtResource( 1 )
 start_decay_bites = 5
 
 [node name="DecayItem4" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 667, 1569 )
 rotation = 0.649223
+z_index = 3
 texture = ExtResource( 9 )
 script = ExtResource( 1 )
 start_decay_bites = 5
+
+[node name="Enemies" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.870588, 0.627451, 0.466667, 1 )
+position = Vector2( 3300, 1360 )
+z_index = 3
+max_len = 4
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.870588, 0.627451, 0.466667, 1 )
+position = Vector2( 3781, 1597 )
+z_index = 3
+max_len = 4
+
+[node name="Beetle" parent="Enemies" instance=ExtResource( 18 )]
+position = Vector2( 620, 1275 )
+z_index = 3
+
+[node name="Beetle2" parent="Enemies" instance=ExtResource( 18 )]
+position = Vector2( 2446, 2377 )
+z_index = 3
+
+[node name="Beetle3" parent="Enemies" instance=ExtResource( 18 )]
+position = Vector2( 3069, 720 )
+z_index = 3
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 1607, 2745 )
+z_index = 3
+max_len = 10
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 539, 2186 )
+z_index = 3
+max_len = 10
