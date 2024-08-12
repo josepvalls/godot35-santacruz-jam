@@ -64,14 +64,8 @@ func start(active_: bool = true, moving_: bool = true):
 func post_start():
 	if not is_player:
 		target = GameManager.player_target
-		speed = speed / 2
-		rotate_speed = rotate_speed / 2
-	
-func _input(event):
-	# trying to test the self-hit recovery
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-		moving = true
-
+		speed = speed / 2.0
+		rotate_speed = rotate_speed / 2.0
 
 
 func _physics_process(delta):

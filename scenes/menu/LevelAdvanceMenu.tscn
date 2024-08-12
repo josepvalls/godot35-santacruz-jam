@@ -22,7 +22,7 @@ size = 64
 outline_size = 4
 font_data = ExtResource( 2 )
 
-[node name="LevelAdvanceMenu" type="Node2D"]
+[node name="LevelAdvanceMenu" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

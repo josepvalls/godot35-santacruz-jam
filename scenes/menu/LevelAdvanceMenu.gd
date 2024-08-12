@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 const LEVELCOMPLETE_STRING = "Level %d Complete!"
 const TAGLINE_STRING = "Everything decayed away!"
@@ -20,14 +20,19 @@ func advance_level() -> void:
 	# write me
 	# unpause game
 	hide()
+	var params = {
+		show_progress_bar = true,
+		level = GameManager.next_level
+	}
+	Game.change_scene("res://scenes/gameplay/gameplay.tscn", params)
 
 func get_score() -> int: 
 	# writeme
-	return 0
+	return GameManager.current_score
 
 func get_previous_level() -> int: 
 	# writeme
-	return 0
+	return GameManager.current_level
 
 func _on_TextureButton_pressed() -> void:
 	advance_level() 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/sprites/ui/title.png" type="Texture" id=2]
@@ -7,18 +7,11 @@
 [ext_resource path="res://scenes/menu/menu.gd" type="Script" id=5]
 [ext_resource path="res://scenes/menu/PlayButton.gd" type="Script" id=6]
 [ext_resource path="res://assets/sprites/leaves/leaves-c-button-hover.png" type="Texture" id=7]
+[ext_resource path="res://assets/bgmusic_titlescreen_loop.mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=5]
 size = 42
 outline_size = 6
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 28
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -83,29 +76,6 @@ text = "start"
 align = 1
 valign = 1
 
-[node name="Version" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -72.0
-margin_right = 240.0
-margin_bottom = -8.0
-
-[node name="GameVersion" type="Label" parent="Version"]
-margin_right = 232.0
-margin_bottom = 25.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "<x.y.z>"
-
-[node name="GodotVersion" type="Label" parent="Version"]
-margin_top = 29.0
-margin_right = 232.0
-margin_bottom = 58.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "<GodotVersion>"
-
 [node name="Credits" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -119,16 +89,16 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="MadeByLabel" type="Label" parent="Credits"]
-margin_right = 132.0
+margin_right = 160.0
 margin_bottom = 17.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "made by:"
+text = "made for DJAM #8 by:"
 align = 2
 
 [node name="Developer1" type="Label" parent="Credits"]
 margin_top = 21.0
-margin_right = 132.0
+margin_right = 160.0
 margin_bottom = 46.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -138,7 +108,7 @@ align = 2
 
 [node name="Developer2" type="Label" parent="Credits"]
 margin_top = 50.0
-margin_right = 132.0
+margin_right = 160.0
 margin_bottom = 75.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -148,7 +118,7 @@ align = 2
 
 [node name="Developer3" type="Label" parent="Credits"]
 margin_top = 79.0
-margin_right = 132.0
+margin_right = 160.0
 margin_bottom = 104.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -158,12 +128,16 @@ align = 2
 
 [node name="Developer4" type="Label" parent="Credits"]
 margin_top = 108.0
-margin_right = 132.0
+margin_right = 160.0
 margin_bottom = 133.0
 grow_horizontal = 0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "N.S. Dawn"
 align = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
