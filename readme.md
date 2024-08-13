@@ -1,5 +1,4 @@
-Godot 3.5 project for "Carrion", an arcade game created for the DJAM #8 . Available: https://josepvalls.itch.io/morgana
-
+Godot 3.5 project for "Carrion", an arcade game created for the DJAM #8.
 Available: https://josepvalls.itch.io/carrion
 
 *Credits:*
