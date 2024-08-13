@@ -2,11 +2,18 @@
 An arcade game created for the DJAM #8.
 Available: https://josepvalls.itch.io/carrion
 
-* All the code is available under CC BY-SA https://creativecommons.org/licenses/by-sa/4.0/deed.en
+* All the code and shaders are available under CC BY-SA https://creativecommons.org/licenses/by-sa/4.0/deed.en \
+  Display the following in a credits section, where [feature] should be replaced with the specific feature Carrion's source files were used for:
+  ```
+  [feature] implementation from Carrion source code
+  License - CC BY-SA https://creativecommons.org/licenses/by-sa/4.0/deed.en
+  Author - Josep Valls https://josepvalls.itch.io/
+  Carrion - https://josepvalls.itch.io/carrion
+  ```
 
-* Usage of any music and SFX requires explicit approval by checkpoint: https://ch3ckpo1nt.com/
+* Usage of any music and/or SFX requires explicit approval by checkpoint: https://ch3ckpo1nt.com/
 
-* Usage of any hand-drawn art requires explicit approval by atumemot https://atumemot.itch.io/ and N.S. Dawn (Nishant Suria) https://ns-dawn.itch.io/
+* Usage of any visual art created for Carrion, whether included in the final game or not, requires explicit approval by atumemot https://atumemot.itch.io/ and N.S. Dawn (Nishant Suria) https://ns-dawn.itch.io/
 
 Additional assets must be licensed by their respective copyright holders:
 * Font 851 Tegaki Zatsu https://fontmeme.com/fonts/851-tegaki-zatsu-font/ (Attribution)
