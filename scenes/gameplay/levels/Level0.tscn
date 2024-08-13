@@ -1,0 +1,227 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/sfx/sfx_movement6(slow).wav" type="AudioStream" id=1]
+[ext_resource path="res://scenes/MainCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/WormTest.gd" type="Script" id=3]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/menu/LevelAdvanceMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/shaded/sprite_0085.png" type="Texture" id=6]
+[ext_resource path="res://scenes/gameplay/EatenNoOutline.tres" type="Material" id=7]
+[ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/gameplay/RockSA.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/gameplay/RockSC.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/gameplay/RockLA.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/gameplay/Fly.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/gameplay/Worm.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=20]
+[ext_resource path="res://assets/bgmusic_level1.mp3" type="AudioStream" id=21]
+[ext_resource path="res://assets/sfx/sfx_win.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/sprites/other-env/frog-b.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/other-env/frog-a.png" type="Texture" id=25]
+[ext_resource path="res://scenes/gameplay/DecayMaterial.tres" type="Material" id=26]
+[ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=28]
+[ext_resource path="res://assets/sprites/worm/hudPlayer_pink.png" type="Texture" id=29]
+
+[sub_resource type="ViewportTexture" id=7]
+viewport_path = NodePath("EatenViewport")
+
+[node name="Level0" type="Node2D"]
+script = ExtResource( 3 )
+next_level = "Level1"
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="LevelAdvanceMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="MainCamera" parent="." instance=ExtResource( 2 )]
+
+[node name="Background" parent="." instance=ExtResource( 18 )]
+position = Vector2( 460, 381 )
+
+[node name="PlayerTarget" type="Sprite" parent="."]
+visible = false
+position = Vector2( 158, 412 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 29 )
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="Frog-b" type="Sprite" parent="Decoration"]
+position = Vector2( 1155, 1015 )
+texture = ExtResource( 23 )
+
+[node name="StuffToEat" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Stuff" type="Node2D" parent="StuffToEat"]
+unique_name_in_owner = true
+
+[node name="a" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.976471, 0.447059, 0.0627451, 1 )
+material = ExtResource( 28 )
+position = Vector2( 183.02, 1037.98 )
+rotation = -0.742166
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+script = ExtResource( 20 )
+
+[node name="c" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 1, 0.886275, 0.14902, 1 )
+material = ExtResource( 28 )
+position = Vector2( 1531, 928 )
+rotation = 0.785398
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+script = ExtResource( 20 )
+
+[node name="frog" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.439216, 0.737255, 0.435294, 1 )
+material = ExtResource( 26 )
+position = Vector2( 1155, 1015 )
+texture = ExtResource( 25 )
+script = ExtResource( 20 )
+
+[node name="e" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.976471, 0.447059, 0.0627451, 1 )
+material = ExtResource( 28 )
+position = Vector2( 782.02, 1138.98 )
+rotation = 2.20568
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+script = ExtResource( 20 )
+
+[node name="g" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 1, 0.886275, 0.14902, 1 )
+material = ExtResource( 28 )
+position = Vector2( 504.02, 918.978 )
+rotation = 0.120709
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+script = ExtResource( 20 )
+
+[node name="EatenSprite" type="Sprite" parent="StuffToEat"]
+material = ExtResource( 7 )
+texture = SubResource( 7 )
+centered = false
+flip_v = true
+
+[node name="Worm" parent="." instance=ExtResource( 16 )]
+modulate = Color( 0.941176, 0.870588, 0.666667, 1 )
+position = Vector2( -1238, 1107 )
+is_player = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EatenViewport" type="Viewport" parent="."]
+size = Vector2( 2048, 2048 )
+transparent_bg = true
+render_target_clear_mode = 1
+render_target_update_mode = 3
+
+[node name="EatenTrace" type="Sprite" parent="EatenViewport"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 29 )
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( 538, 723 )
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( 444, 1367 )
+rotation = 3.05939
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( -735, 768 )
+rotation = -0.254032
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( -1270, 1295 )
+rotation = 3.34785
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( -1512, 976 )
+rotation = -1.5708
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( 2455, 241 )
+rotation = -0.491506
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 9 )]
+position = Vector2( 2038, 720 )
+rotation = 2.35939
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Rocks" type="Node2D" parent="Obstacles"]
+modulate = Color( 0.568627, 0.568627, 0.568627, 1 )
+position = Vector2( -235, -13 )
+
+[node name="RockSA" parent="Obstacles/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 359, 828 )
+
+[node name="RockSA2" parent="Obstacles/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 1694, 1266 )
+rotation = 0.391901
+
+[node name="RockLA" parent="Obstacles/Rocks" instance=ExtResource( 13 )]
+position = Vector2( -1255, 1126 )
+rotation = 0.126743
+
+[node name="RockLA2" parent="Obstacles/Rocks" instance=ExtResource( 13 )]
+position = Vector2( -184, 1084 )
+rotation = -0.445024
+
+[node name="RockLA3" parent="Obstacles/Rocks" instance=ExtResource( 13 )]
+position = Vector2( 2287, 575 )
+rotation = 1.4593
+
+[node name="RockSB" parent="Obstacles/Rocks" instance=ExtResource( 11 )]
+position = Vector2( 228, 741 )
+
+[node name="RockSB4" parent="Obstacles/Rocks" instance=ExtResource( 11 )]
+position = Vector2( -307, 1457 )
+rotation = 2.11647
+scale = Vector2( 1.2, 1.4 )
+
+[node name="RockSB2" parent="Obstacles/Rocks" instance=ExtResource( 11 )]
+position = Vector2( 342, 1268 )
+rotation = 1.74818
+
+[node name="RockSB3" parent="Obstacles/Rocks" instance=ExtResource( 11 )]
+position = Vector2( 1770, 675 )
+rotation = 3.13507
+
+[node name="RockSC" parent="Obstacles/Rocks" instance=ExtResource( 12 )]
+position = Vector2( 239, 1361 )
+
+[node name="RockSC2" parent="Obstacles/Rocks" instance=ExtResource( 12 )]
+position = Vector2( -1, 1200 )
+rotation = -0.379512
+
+[node name="Flies" type="Node2D" parent="."]
+
+[node name="Fly1" parent="Flies" instance=ExtResource( 15 )]
+
+[node name="Fly2" parent="Flies" instance=ExtResource( 15 )]
+
+[node name="Fly3" parent="Flies" instance=ExtResource( 15 )]
+
+[node name="Fly4" parent="Flies" instance=ExtResource( 15 )]
+
+[node name="Fly5" parent="Flies" instance=ExtResource( 15 )]
+
+[node name="Fly6" parent="Flies" instance=ExtResource( 15 )]
+
+[node name="EventPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+autoplay = true
