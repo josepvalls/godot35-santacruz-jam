@@ -7,6 +7,7 @@ Programming:
 * atumemot https://atumemot.itch.io/
 * N.S. Dawn (Nishant Suria) https://ns-dawn.itch.io/
 
+Other assets:
 * Logo and insect sprites by atumemot and N.S. Dawn
 * Music and SFX by checkpoint: https://ch3ckpo1nt.com/
 * Background sprites by Kenney: https://kenney.nl/assets/foliage-sprites
