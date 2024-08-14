@@ -1,16 +1,17 @@
 extends Node
 
 var elapsed = 0
-var current_level = null
 
 # `pre_start()` is called when a scene is loaded.
 # Use this function to receive params from `Game.change_scene(params)`.
 func pre_start(params):
 	var cur_scene: Node = get_tree().current_scene
 	print("Current scene is: ", cur_scene.name, " (", cur_scene.filename, ")")
-	var scene = load("res://scenes/gameplay/levels/"+params["level"]+".tscn").instance()
-	add_child(scene)
-	current_level = scene
+	print("gameplay.gd: pre_start() called with params = ")
+	if params:
+		for key in params:
+			var val = params[key]
+			printt("", key, val)
 	print("Done")
 
 

@@ -16,7 +16,6 @@ var stuff_progress = {}
 var use_keyboard = false
 var min_len := 3
 var base_len := 20
-export var next_level := "Level0"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +26,6 @@ func _ready():
 	$Worm.connect("on_hit", self, "on_hit")
 	$Worm.connect("on_hit_self", self, "on_hit_self")
 	$Worm.start(true, false)
-	
 	
 	for i in $Enemies.get_children():
 		i.start()
@@ -42,8 +40,6 @@ func _ready():
 		stuff_progress[item.name] = item
 	GameManager.player_target = $PlayerTarget
 	GameManager.stuff = stuff_progress
-	GameManager.next_level = next_level
-	GameManager.current_level += 1
 
 func decayed(item: DecayItem):
 	pass
@@ -80,9 +76,8 @@ func update_status():
 	status += "Self-hit: " + str(hit_self)
 	status += "\n"
 	status += "Hit: " + str(hit)
-	GameManager.current_score = eaten
-	$HUD.update_health(100.0 * $Worm.max_len / (base_len + len(stuff_progress) * 2))
-	$HUD.update_score(eaten)
+	status_label.text = status
+	$CanvasLayer/ProgressBar.value = 100.0 * $Worm.max_len / (base_len + len(stuff_progress) * 2)
 	
 
 func _process(delta):
@@ -96,19 +91,6 @@ func _process(delta):
 		update_decaying(delta)
 		update_status()
 		update_sfx(delta)
-		$MainCamera.position = $"Worm/Head".position
-		
-
-func _input(event):
-	if is_playing:
-		if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-			$Worm.moving = true
-			use_keyboard = false
-		elif event is InputEventKey and event.pressed: # and event.keycode == KEY_ESCAPE:
-			$Worm.moving = true
-			use_keyboard = true
-
-
 	
 func update_sfx(delta):
 	sfx_playback_elapsed += delta
@@ -127,9 +109,11 @@ func update_decaying(delta):
 func done_state():
 	$SFXPlayer.stop()
 	$EventPlayer.play()
+	$CanvasLayer/Done/Label.text = "Cool, you decomposed it all. Yay decay!\nYour score is: " + str(eaten)
+	$CanvasLayer/Done.show()
 	$Worm.active = false
 	is_playing = false
-	$LevelAdvanceMenu.finish_level()
+	
 			
 		
 

@@ -3,9 +3,6 @@ extends Node
 var player_reference: Worm = null
 var player_target: Node2D = null
 var stuff := {}
-var current_level := 0
-var current_score := 0
-var next_level := "Level0"
 
 func get_random_item(exclude_done: bool = true):
 	var keys = stuff.keys()

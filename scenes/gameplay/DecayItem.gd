@@ -11,6 +11,7 @@ var decay := 0.0
 var done := false
 
 signal decayed(item)
+signal first_bite(item)
 
 func _process(delta):
 	if not done:
