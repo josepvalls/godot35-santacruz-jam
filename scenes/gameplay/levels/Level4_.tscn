@@ -1,0 +1,414 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/leaves/leaves-a.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/other-env/mushroom-a.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/other-env/frog-b.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/other-env/frog-a.png" type="Texture" id=7]
+[ext_resource path="res://scenes/gameplay/DecayMaterial.tres" type="Material" id=8]
+[ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=9]
+[ext_resource path="res://assets/sprites/leaves/leaves-b.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/other-env/snek-b.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/other-env/rabbit-b.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/other-env/rabbit-a.png" type="Texture" id=13]
+[ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/gameplay/RockSA.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/gameplay/RockSC.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/gameplay/Enemy.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/gameplay/RockLA.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=21]
+
+[node name="Level4" type="Node2D"]
+
+[node name="Backgrounds" type="Node" parent="."]
+
+[node name="Background2" parent="Backgrounds" instance=ExtResource( 17 )]
+position = Vector2( 2171, 725 )
+
+[node name="Background3" parent="Backgrounds" instance=ExtResource( 17 )]
+position = Vector2( 254, 2771 )
+
+[node name="Background4" parent="Backgrounds" instance=ExtResource( 17 )]
+position = Vector2( 2302, 2770 )
+
+[node name="Background5" parent="Backgrounds" instance=ExtResource( 17 )]
+position = Vector2( 4214, 726 )
+
+[node name="Background6" parent="Backgrounds" instance=ExtResource( 17 )]
+position = Vector2( 4350, 2774 )
+
+[node name="Background" parent="Backgrounds" instance=ExtResource( 17 )]
+position = Vector2( 123, 725 )
+
+[node name="StartHere" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( 2133, 1640 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall4" parent="Walls" instance=ExtResource( 14 )]
+position = Vector2( 1180, 2960 )
+rotation = -2.85759
+
+[node name="Wall5" parent="Walls" instance=ExtResource( 14 )]
+position = Vector2( 3083, 2951 )
+rotation = 2.82149
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 14 )]
+position = Vector2( 4036, 1718 )
+rotation = 1.64976
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 14 )]
+position = Vector2( 298, 1671 )
+rotation = -1.54177
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 14 )]
+position = Vector2( 3150, 459 )
+rotation = 0.280179
+
+[node name="Wall" parent="Walls" instance=ExtResource( 14 )]
+position = Vector2( 1236, 462 )
+rotation = -0.292811
+
+[node name="Obstacles" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="RockLA" parent="Obstacles" instance=ExtResource( 20 )]
+position = Vector2( 1539, 1772 )
+rotation = 3.04394
+scale = Vector2( 3.38643, -2.84122 )
+
+[node name="RockSA2" parent="Obstacles" instance=ExtResource( 15 )]
+position = Vector2( 2581, 1906 )
+rotation = -0.253386
+scale = Vector2( -1.95788, 1.64619 )
+
+[node name="RockSA" parent="Obstacles" instance=ExtResource( 15 )]
+position = Vector2( 1874, 1962 )
+rotation = 0.129286
+scale = Vector2( 3.53196, 2.41488 )
+
+[node name="RockSB" parent="Obstacles" instance=ExtResource( 16 )]
+position = Vector2( 2413, 1971 )
+rotation = 0.36847
+scale = Vector2( 4.09364, 2.78076 )
+
+[node name="RockSC2" parent="Obstacles" instance=ExtResource( 18 )]
+position = Vector2( 419, 1784 )
+scale = Vector2( 4.3711, 3.35022 )
+
+[node name="RockSC" parent="Obstacles" instance=ExtResource( 18 )]
+position = Vector2( 2165, 1969 )
+scale = Vector2( 3.79806, 3.31793 )
+
+[node name="RockSC3" parent="Obstacles" instance=ExtResource( 18 )]
+position = Vector2( 351, 1958 )
+rotation = 2.97829
+scale = Vector2( 2.38146, -1.85525 )
+
+[node name="RockSC6" parent="Obstacles" instance=ExtResource( 18 )]
+position = Vector2( 3130, 2295 )
+rotation = 0.206477
+scale = Vector2( 2.90229, 1.77345 )
+
+[node name="RockSA3" parent="Obstacles" instance=ExtResource( 15 )]
+position = Vector2( 2609, 1081 )
+
+[node name="RockLA4" parent="Obstacles" instance=ExtResource( 20 )]
+position = Vector2( 3626, 992 )
+rotation = 0.0535285
+scale = Vector2( 2.58741, 2.0799 )
+
+[node name="RockLA3" parent="Obstacles" instance=ExtResource( 20 )]
+position = Vector2( 1901, 893 )
+rotation = -0.291482
+scale = Vector2( 3.8411, 2.33298 )
+
+[node name="RockSB4" parent="Obstacles" instance=ExtResource( 16 )]
+position = Vector2( 1014, 644 )
+rotation = 0.0207656
+scale = Vector2( 4.76302, 4.03995 )
+
+[node name="RockSB3" parent="Obstacles" instance=ExtResource( 16 )]
+position = Vector2( 3348, 2395 )
+rotation = 0.0121726
+scale = Vector2( 5.32269, 3.75735 )
+
+[node name="RockSB2" parent="Obstacles" instance=ExtResource( 16 )]
+position = Vector2( 2178, 1030 )
+rotation = -0.214501
+scale = Vector2( 3.06357, 2.02472 )
+
+[node name="RockSC4" parent="Obstacles" instance=ExtResource( 18 )]
+position = Vector2( 2392, 1010 )
+scale = Vector2( 3.33858, 2.36927 )
+
+[node name="RockLA2" parent="Obstacles" instance=ExtResource( 20 )]
+position = Vector2( 2837, 1179 )
+rotation = 0.106472
+scale = Vector2( 2.41088, 1.75287 )
+
+[node name="RockSC5" parent="Obstacles" instance=ExtResource( 18 )]
+position = Vector2( 1408, 2367 )
+rotation = -0.150647
+scale = Vector2( 3.436, 2.29878 )
+
+[node name="RockSC7" parent="Obstacles" instance=ExtResource( 18 )]
+position = Vector2( 3336, 1066 )
+rotation = -0.264218
+
+[node name="RockSA4" parent="Obstacles" instance=ExtResource( 15 )]
+position = Vector2( 3473, 1102 )
+rotation = -0.710592
+
+[node name="Decorations" type="Node" parent="."]
+
+[node name="frogskel2" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
+position = Vector2( 2676, 695 )
+rotation = -0.794732
+z_index = 3
+texture = ExtResource( 6 )
+
+[node name="frogskel" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
+position = Vector2( 928, 1144 )
+rotation = 2.74423
+z_index = 3
+texture = ExtResource( 6 )
+
+[node name="rabbitskel" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
+position = Vector2( 3490, 1645 )
+rotation = -1.02837
+z_index = 3
+texture = ExtResource( 12 )
+
+[node name="snakeskel" type="Sprite" parent="Decorations"]
+modulate = Color( 0.839216, 0.839216, 0.839216, 1 )
+position = Vector2( 2054, 2590 )
+rotation = -0.000773025
+z_index = 3
+texture = ExtResource( 11 )
+
+[node name="Mushroom-a2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 2579, 1160 )
+rotation = 0.234225
+scale = Vector2( 0.194155, 0.247038 )
+z_index = 2
+texture = ExtResource( 5 )
+
+[node name="Mushroom-a" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 3128, 2364 )
+rotation = 0.391156
+scale = Vector2( 0.29113, 0.337705 )
+z_index = 2
+texture = ExtResource( 5 )
+
+[node name="Mushroom-b4" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 2241, 1069 )
+rotation = 0.170689
+scale = Vector2( 0.261494, 0.309505 )
+z_index = 2
+texture = ExtResource( 2 )
+
+[node name="Mushroom-b3" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 1388, 2450 )
+rotation = 0.318065
+scale = Vector2( 0.29113, 0.337705 )
+z_index = 2
+texture = ExtResource( 2 )
+
+[node name="Mushroom-b2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 1283, 2440 )
+scale = Vector2( 0.462875, 0.649654 )
+z_index = 2
+texture = ExtResource( 2 )
+
+[node name="Mushroom-b" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 496, 1942 )
+z_index = 2
+texture = ExtResource( 2 )
+
+[node name="Twigs4" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 3092, 891 )
+rotation = -0.0403672
+z_index = 5
+flip_h = true
+
+[node name="Twigs3" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 1081, 1922 )
+rotation = -0.307997
+z_index = 5
+flip_h = true
+
+[node name="Twigs2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 2836, 1810 )
+z_index = 5
+flip_h = true
+
+[node name="Twigs" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 2700, 1723 )
+z_index = 5
+
+[node name="Stuff" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="snek" type="Sprite" parent="Stuff"]
+modulate = Color( 0.580392, 0.611765, 0.8, 1 )
+material = ExtResource( 8 )
+position = Vector2( 2076, 2604 )
+z_index = 3
+script = ExtResource( 1 )
+start_decay_bites = 100
+
+[node name="frog2" type="Sprite" parent="Stuff"]
+modulate = Color( 0.560784, 0.764706, 0.466667, 1 )
+material = ExtResource( 8 )
+position = Vector2( 2675, 692 )
+rotation = -0.778148
+z_index = 3
+texture = ExtResource( 7 )
+script = ExtResource( 1 )
+start_decay_bites = 40
+
+[node name="frog" type="Sprite" parent="Stuff"]
+modulate = Color( 0.560784, 0.764706, 0.466667, 1 )
+material = ExtResource( 8 )
+position = Vector2( 929, 1146 )
+rotation = 2.75252
+z_index = 3
+texture = ExtResource( 7 )
+script = ExtResource( 1 )
+start_decay_bites = 40
+
+[node name="rabbit" type="Sprite" parent="Stuff"]
+position = Vector2( 3500, 1641 )
+rotation = -0.98283
+z_index = 3
+texture = ExtResource( 13 )
+script = ExtResource( 1 )
+start_decay_bites = 60
+
+[node name="DecayItem7" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 9 )
+position = Vector2( 3067, 2671 )
+rotation = 1.59336
+z_index = 3
+texture = ExtResource( 10 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem2" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 9 )
+position = Vector2( 2354, 1359 )
+rotation = -0.0266565
+z_index = 3
+texture = ExtResource( 10 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 9 )
+position = Vector2( 2014, 1293 )
+rotation = -3.01008
+z_index = 3
+texture = ExtResource( 10 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem6" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 9 )
+position = Vector2( 1934, 454 )
+rotation = -0.22247
+z_index = 3
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+start_decay_bites = 30
+
+[node name="DecayItem3" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 9 )
+position = Vector2( 780, 2569 )
+rotation = 0.0666817
+z_index = 3
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+start_decay_bites = 30
+
+[node name="DecayItem5" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 9 )
+position = Vector2( 736, 1729 )
+rotation = 1.29845
+z_index = 3
+texture = ExtResource( 4 )
+script = ExtResource( 1 )
+start_decay_bites = 5
+
+[node name="DecayItem4" type="Sprite" parent="Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 9 )
+position = Vector2( 667, 1569 )
+rotation = 0.649223
+z_index = 3
+texture = ExtResource( 4 )
+script = ExtResource( 1 )
+start_decay_bites = 5
+
+[node name="Enemies" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 19 )]
+modulate = Color( 0.870588, 0.627451, 0.466667, 1 )
+position = Vector2( 3300, 1360 )
+z_index = 3
+max_len = 4
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 19 )]
+modulate = Color( 0.870588, 0.627451, 0.466667, 1 )
+position = Vector2( 3781, 1597 )
+z_index = 3
+max_len = 4
+
+[node name="Beetle" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 620, 1275 )
+z_index = 3
+
+[node name="Beetle2" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 2446, 2377 )
+z_index = 3
+
+[node name="Beetle3" parent="Enemies" instance=ExtResource( 21 )]
+position = Vector2( 3069, 720 )
+z_index = 3
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 19 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 1607, 2745 )
+z_index = 3
+max_len = 10
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 19 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 539, 2186 )
+z_index = 3
+max_len = 10

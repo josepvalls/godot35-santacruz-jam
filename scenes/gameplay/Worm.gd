@@ -64,28 +64,20 @@ func start(active_: bool = true, moving_: bool = true):
 func post_start():
 	if not is_player:
 		target = GameManager.player_target
-		speed = speed / 2
-		rotate_speed = rotate_speed / 2
-	
-func _input(event):
-	# trying to test the self-hit recovery
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-		moving = true
-
+		speed = speed / 2.0
+		rotate_speed = rotate_speed / 2.0
 
 
 func _physics_process(delta):
 	if active and target:
 		var point = target.position
 		var head_rotation = head.rotation
-		head_rotation -= PI/2
 		var target_rotation = null
 		head.look_at(point)
 		target_rotation = head.rotation
 		var actual_rotation = move_toward(head_rotation, target_rotation, rotate_speed * delta)
 		head.rotation = actual_rotation
 		# this is just for looks until we fix the sprites to face right
-		head.rotation += PI/2
 		point = to_local(point)
 		if moving and head.position.distance_to(point) >= follow_margin:
 			if physics_based_movement:
