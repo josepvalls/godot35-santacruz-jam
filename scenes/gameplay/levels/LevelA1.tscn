@@ -1,0 +1,366 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gameplay/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gameplay/RockSA.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/leaves/leaves-a.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/leaves/leaves-b.png" type="Texture" id=7]
+[ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sprites/other-env/mushroom-a.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/other-env/mushroom-b.png" type="Texture" id=10]
+[ext_resource path="res://scenes/gameplay/DecayMaterialPlant.tres" type="Material" id=11]
+[ext_resource path="res://assets/sprites/sticks/twigs.png" type="Texture" id=12]
+[ext_resource path="res://scenes/gameplay/Fly.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/gameplay/EnemyMaggot.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/MainCamera.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/gameplay/Worm.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/menu/LevelAdvanceMenu.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scripts/WormTest.gd" type="Script" id=19]
+[ext_resource path="res://assets/sprites/worm/hudPlayer_pink.png" type="Texture" id=20]
+[ext_resource path="res://assets/sfx/sfx_movement6(slow).wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sfx/sfx_win.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/bgmusic_level1.mp3" type="AudioStream" id=23]
+[ext_resource path="res://scenes/gameplay/EatenNoOutline.tres" type="Material" id=24]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("EatenViewport")
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 19 )
+
+[node name="HUD" parent="." instance=ExtResource( 15 )]
+
+[node name="LevelAdvanceMenu" parent="." instance=ExtResource( 18 )]
+
+[node name="MainCamera" parent="." instance=ExtResource( 16 )]
+zoom = Vector2( 1.3, 1.3 )
+
+[node name="PlayerTarget" type="Sprite" parent="."]
+visible = false
+position = Vector2( 158, 412 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 20 )
+
+[node name="Backgrounds" type="Node" parent="."]
+
+[node name="Background3" parent="Backgrounds" instance=ExtResource( 8 )]
+position = Vector2( 1103, 1626 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall2" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 1037, 3157 )
+rotation = 3.14159
+
+[node name="Wall3" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 1588, 3181 )
+rotation = 1.5708
+
+[node name="Wall9" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 495, 478 )
+rotation = -0.506995
+
+[node name="Wall8" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 1847, 486 )
+rotation = 0.557584
+
+[node name="Wall7" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 2099, 1281 )
+rotation = 2.09546
+
+[node name="Wall6" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 146, 1213 )
+rotation = -1.93755
+
+[node name="Wall" parent="Walls" instance=ExtResource( 2 )]
+position = Vector2( 531, 3169 )
+rotation = -1.5708
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="RockSA" parent="Obstacles" instance=ExtResource( 4 )]
+position = Vector2( 1080, 1183 )
+scale = Vector2( 5.30602, 4.86721 )
+
+[node name="Decorations" type="Node" parent="."]
+
+[node name="Mushroom-a" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 951, 1340 )
+rotation = 0.31385
+scale = Vector2( 0.384447, 0.450167 )
+z_index = 4
+texture = ExtResource( 9 )
+
+[node name="Mushroom-a2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 1985, 1421 )
+rotation = -0.29494
+scale = Vector2( 0.434988, 0.596382 )
+z_index = 4
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="Mushroom-b2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 633, 3042 )
+rotation = 0.477665
+scale = Vector2( 1.50536, 1.40468 )
+z_index = 4
+texture = ExtResource( 10 )
+
+[node name="Mushroom-b" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.784314, 0.772549, 1 )
+position = Vector2( 496, 2056 )
+rotation = 0.238832
+z_index = 4
+texture = ExtResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 1723, 1128 )
+z_index = 5
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="Sprite5" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 1236, 2011 )
+z_index = 5
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="Sprite4" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 1460, 2111 )
+z_index = 5
+texture = ExtResource( 12 )
+
+[node name="Sprite3" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 1420, 3001 )
+z_index = 5
+texture = ExtResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="Decorations"]
+modulate = Color( 1, 0.960784, 0.839216, 1 )
+position = Vector2( 794, 1662 )
+z_index = 5
+texture = ExtResource( 12 )
+
+[node name="StuffToEat" type="BackBufferCopy" parent="."]
+z_index = 3
+copy_mode = 2
+
+[node name="Stuff" type="Node2D" parent="StuffToEat"]
+unique_name_in_owner = true
+
+[node name="DecayItem7" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 716.945, 724 )
+texture = ExtResource( 5 )
+script = ExtResource( 1 )
+start_decay_bites = 30
+
+[node name="DecayItem" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 1089.95, 2387 )
+texture = ExtResource( 5 )
+script = ExtResource( 1 )
+start_decay_bites = 30
+
+[node name="DecayItem9" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 841.945, 2536 )
+rotation = 0.9182
+texture = ExtResource( 7 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem8" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 822.945, 2041 )
+rotation = -2.0036
+texture = ExtResource( 7 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem11" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 2054.95, 877 )
+texture = ExtResource( 7 )
+flip_h = true
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem10" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( -2288.05, 1509 )
+texture = ExtResource( 7 )
+offset = Vector2( 3672, -812 )
+flip_h = true
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem2" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 1672.95, 1597 )
+texture = ExtResource( 7 )
+script = ExtResource( 1 )
+start_decay_bites = 10
+
+[node name="DecayItem6" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 410.945, 1340 )
+rotation = 0.633882
+texture = ExtResource( 6 )
+script = ExtResource( 1 )
+start_decay_bites = 5
+
+[node name="DecayItem3" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 385.945, 1193 )
+texture = ExtResource( 6 )
+script = ExtResource( 1 )
+start_decay_bites = 5
+
+[node name="DecayItem5" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 1385.95, 1554 )
+rotation = -2.64842
+texture = ExtResource( 6 )
+script = ExtResource( 1 )
+start_decay_bites = 5
+
+[node name="DecayItem4" type="Sprite" parent="StuffToEat/Stuff"]
+modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
+material = ExtResource( 11 )
+position = Vector2( 1737.95, 641 )
+texture = ExtResource( 6 )
+script = ExtResource( 1 )
+start_decay_bites = 5
+
+[node name="EatenSprite" type="Sprite" parent="StuffToEat"]
+material = ExtResource( 24 )
+texture = SubResource( 1 )
+centered = false
+flip_v = true
+
+[node name="Worm" parent="." instance=ExtResource( 17 )]
+modulate = Color( 0.996078, 0.988235, 0.560784, 1 )
+position = Vector2( 1046, 2946 )
+z_index = 3
+is_player = true
+
+[node name="EatenViewport" type="Viewport" parent="."]
+size = Vector2( 4096, 4096 )
+transparent_bg = true
+render_target_clear_mode = 1
+render_target_update_mode = 3
+
+[node name="EatenTrace" type="Sprite" parent="EatenViewport"]
+scale = Vector2( 0.5, 0.5 )
+z_index = 3
+texture = ExtResource( 20 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 632, 863 )
+z_index = 3
+max_len = 10
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 1640, 1301 )
+z_index = 3
+max_len = 10
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 545, 1470 )
+z_index = 3
+max_len = 10
+
+[node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
+modulate = Color( 0.807843, 0.862745, 1, 1 )
+position = Vector2( 1074, 452 )
+z_index = 3
+max_len = 10
+
+[node name="Maggot2" parent="Enemies" instance=ExtResource( 14 )]
+position = Vector2( 1183, 2457 )
+z_index = 3
+
+[node name="Maggot3" parent="Enemies" instance=ExtResource( 14 )]
+position = Vector2( 1035, 2465 )
+z_index = 3
+
+[node name="Maggot5" parent="Enemies" instance=ExtResource( 14 )]
+position = Vector2( 553, 721 )
+z_index = 3
+
+[node name="Maggot4" parent="Enemies" instance=ExtResource( 14 )]
+position = Vector2( 784, 782 )
+z_index = 3
+
+[node name="Maggot" parent="Enemies" instance=ExtResource( 14 )]
+position = Vector2( 904, 2383 )
+z_index = 3
+
+[node name="Flies" type="Node" parent="."]
+
+[node name="Fly" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly2" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly3" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly4" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly5" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly6" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly7" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly8" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly9" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="Fly10" parent="Flies" instance=ExtResource( 13 )]
+z_index = 3
+
+[node name="EventPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = -10.0
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+autoplay = true
