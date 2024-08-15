@@ -30,13 +30,13 @@ viewport_path = NodePath("EatenViewport")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 19 )
+next_level = "LevelA2"
 
 [node name="HUD" parent="." instance=ExtResource( 15 )]
 
 [node name="LevelAdvanceMenu" parent="." instance=ExtResource( 18 )]
 
 [node name="MainCamera" parent="." instance=ExtResource( 16 )]
-zoom = Vector2( 1.3, 1.3 )
 
 [node name="PlayerTarget" type="Sprite" parent="."]
 visible = false

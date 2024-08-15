@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=2]
@@ -20,35 +20,62 @@
 [ext_resource path="res://scenes/gameplay/Fly.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/gameplay/EnemyMaggot.tscn" type="PackedScene" id=19]
 [ext_resource path="res://assets/sprites/sticks/twig-b.png" type="Texture" id=20]
+[ext_resource path="res://scripts/WormTest.gd" type="Script" id=21]
+[ext_resource path="res://scenes/gameplay/Worm.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/menu/LevelAdvanceMenu.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/MainCamera.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/sprites/worm/hudPlayer_pink.png" type="Texture" id=26]
+[ext_resource path="res://scenes/gameplay/EatenNoOutline.tres" type="Material" id=27]
+[ext_resource path="res://assets/sfx/sfx_movement6(slow).wav" type="AudioStream" id=28]
+[ext_resource path="res://assets/bgmusic_level1.mp3" type="AudioStream" id=29]
+[ext_resource path="res://assets/sfx/sfx_win.wav" type="AudioStream" id=30]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("EatenViewport")
 
 [node name="Level2" type="Node2D"]
-position = Vector2( 961, 2945 )
+script = ExtResource( 21 )
+next_level = "LevelA3"
+
+[node name="HUD" parent="." instance=ExtResource( 24 )]
+
+[node name="LevelAdvanceMenu" parent="." instance=ExtResource( 23 )]
+
+[node name="MainCamera" parent="." instance=ExtResource( 25 )]
+
+[node name="PlayerTarget" type="Sprite" parent="."]
+visible = false
+position = Vector2( 158, 412 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 26 )
+
+[node name="EnemyTarget" type="Sprite" parent="."]
+visible = false
+position = Vector2( 158, 412 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 26 )
 
 [node name="Backgrounds" type="Node" parent="."]
 
-[node name="Background2" parent="Backgrounds" instance=ExtResource( 16 )]
-position = Vector2( 1069, 4681 )
-
 [node name="Background3" parent="Backgrounds" instance=ExtResource( 16 )]
-position = Vector2( 2746, 2640 )
+position = Vector2( 2137, 6323 )
 
 [node name="Background4" parent="Backgrounds" instance=ExtResource( 16 )]
-position = Vector2( 3115, 4687 )
-
-[node name="Background7" parent="Backgrounds" instance=ExtResource( 16 )]
-position = Vector2( 1288, 594 )
+position = Vector2( 2140, -1862 )
+num_random = 0
 
 [node name="Background6" parent="Backgrounds" instance=ExtResource( 16 )]
-position = Vector2( 3329, 599 )
+position = Vector2( 6214, 2120 )
+num_random = 0
 
 [node name="Background5" parent="Backgrounds" instance=ExtResource( 16 )]
-position = Vector2( 4776, 2639 )
+position = Vector2( -1960, 2053 )
+num_random = 0
 
-[node name="Background" parent="Backgrounds" instance=ExtResource( 16 )]
-position = Vector2( 699, 2633 )
-
-[node name="StartHere" type="Node2D" parent="."]
-unique_name_in_owner = true
+[node name="Background2" parent="Backgrounds" instance=ExtResource( 16 )]
+position = Vector2( 2138, 2233 )
+num_random = 0
 
 [node name="Walls" type="Node" parent="."]
 
@@ -321,254 +348,257 @@ z_index = 5
 texture = ExtResource( 17 )
 offset = Vector2( -122, -122 )
 
-[node name="Stuff" type="Node" parent="."]
+[node name="StuffToEat" type="BackBufferCopy" parent="."]
+z_index = 3
+copy_mode = 2
+
+[node name="Stuff" type="Node2D" parent="StuffToEat"]
 unique_name_in_owner = true
 
-[node name="DecayItem9" type="Sprite" parent="Stuff"]
+[node name="DecayItem9" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1077, 3598 )
 rotation = 1.95726
 scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 9 )
 script = ExtResource( 3 )
 start_decay_bites = 5
 
-[node name="DecayItem13" type="Sprite" parent="Stuff"]
+[node name="DecayItem13" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 829, 3030 )
 rotation = 1.95726
 scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 9 )
 script = ExtResource( 3 )
 start_decay_bites = 5
 
-[node name="DecayItem14" type="Sprite" parent="Stuff"]
+[node name="DecayItem14" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1257, 2886 )
 rotation = 0.107571
-scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 9 )
 script = ExtResource( 3 )
 start_decay_bites = 5
 
-[node name="DecayItem" type="Sprite" parent="Stuff"]
+[node name="DecayItem" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1140, 3398 )
 rotation = 0.978632
-z_index = 3
 texture = ExtResource( 9 )
 script = ExtResource( 3 )
 start_decay_bites = 5
 
-[node name="DecayItem12" type="Sprite" parent="Stuff"]
+[node name="DecayItem12" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1868, 3932 )
 rotation = 0.305887
-scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 8 )
 flip_h = true
 script = ExtResource( 3 )
 start_decay_bites = 30
 
-[node name="DecayItem8" type="Sprite" parent="Stuff"]
+[node name="DecayItem8" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1812, 2846 )
 rotation = 0.152943
-z_index = 3
 texture = ExtResource( 8 )
 flip_h = true
 script = ExtResource( 3 )
 start_decay_bites = 30
 
-[node name="DecayItem15" type="Sprite" parent="Stuff"]
+[node name="DecayItem15" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2832, 3721 )
 rotation = -0.380154
-z_index = 3
 texture = ExtResource( 8 )
 script = ExtResource( 3 )
 start_decay_bites = 30
 
-[node name="DecayItem2" type="Sprite" parent="Stuff"]
+[node name="DecayItem2" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2193, 2658 )
-z_index = 3
 texture = ExtResource( 8 )
 script = ExtResource( 3 )
 start_decay_bites = 30
 
-[node name="DecayItem17" type="Sprite" parent="Stuff"]
+[node name="DecayItem17" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 3414, 3370 )
 rotation = 1.60696
 scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
 
-[node name="DecayItem11" type="Sprite" parent="Stuff"]
+[node name="DecayItem11" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1871, 3568 )
 rotation = 0.80348
-z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
 
-[node name="DecayItem10" type="Sprite" parent="Stuff"]
+[node name="DecayItem10" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1580, 3605 )
 rotation = -0.616665
-z_index = 3
 texture = ExtResource( 10 )
 flip_h = true
 script = ExtResource( 3 )
 start_decay_bites = 10
 
-[node name="DecayItem3" type="Sprite" parent="Stuff"]
+[node name="DecayItem3" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2582, 1849 )
 rotation = 2.83326
-z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
 
-[node name="DecayItem4" type="Sprite" parent="Stuff"]
+[node name="DecayItem4" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2961, 945 )
 rotation = 1.25566
-z_index = 3
 texture = ExtResource( 11 )
 script = ExtResource( 3 )
 start_decay_bites = 3
 
-[node name="DecayItem16" type="Sprite" parent="Stuff"]
+[node name="DecayItem16" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2273, 3674 )
 rotation = 0.260268
-scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 11 )
 flip_h = true
 script = ExtResource( 3 )
 start_decay_bites = 3
 
-[node name="DecayItem23" type="Sprite" parent="Stuff"]
+[node name="DecayItem23" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 3271, 1280 )
 rotation = 0.260268
-scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 11 )
 script = ExtResource( 3 )
 start_decay_bites = 3
 
-[node name="DecayItem5" type="Sprite" parent="Stuff"]
+[node name="DecayItem5" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2374, 3820 )
 rotation = 0.130134
-z_index = 3
+scale = Vector2( 1, 1 )
 texture = ExtResource( 11 )
 script = ExtResource( 3 )
 start_decay_bites = 3
 
-[node name="DecayItem24" type="Sprite" parent="Stuff"]
+[node name="DecayItem24" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1618, 1182 )
 rotation = -0.0140012
-z_index = 3
 texture = ExtResource( 8 )
 flip_h = true
 script = ExtResource( 3 )
 start_decay_bites = 30
 
-[node name="DecayItem6" type="Sprite" parent="Stuff"]
+[node name="DecayItem6" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 1784, 1000 )
 rotation = -0.469821
-z_index = 3
 texture = ExtResource( 8 )
 script = ExtResource( 3 )
 start_decay_bites = 30
 
-[node name="DecayItem20" type="Sprite" parent="Stuff"]
+[node name="DecayItem20" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 2605, 2383 )
 rotation = 2.88924
-z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
 
-[node name="DecayItem21" type="Sprite" parent="Stuff"]
+[node name="DecayItem21" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 3508, 1984 )
 rotation = 1.84938
-z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
 
-[node name="DecayItem7" type="Sprite" parent="Stuff"]
+[node name="DecayItem7" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 15 )
 position = Vector2( 3392, 2516 )
 rotation = -0.0936103
-z_index = 3
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
 start_decay_bites = 10
 
-[node name="DecayItem22" type="Sprite" parent="Stuff"]
+[node name="DecayItem22" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.92549, 0.815686, 0.486275, 1 )
+material = ExtResource( 15 )
 position = Vector2( 3425, 1632 )
 rotation = -2.67146
-scale = Vector2( 1, 1 )
-z_index = 3
 texture = ExtResource( 20 )
 script = ExtResource( 3 )
 
-[node name="DecayItem19" type="Sprite" parent="Stuff"]
+[node name="DecayItem19" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.92549, 0.815686, 0.486275, 1 )
+material = ExtResource( 15 )
 position = Vector2( 1960, 1377 )
 rotation = 1.80586
-z_index = 3
+scale = Vector2( 1, 1 )
 texture = ExtResource( 20 )
 script = ExtResource( 3 )
 
-[node name="DecayItem18" type="Sprite" parent="Stuff"]
+[node name="DecayItem18" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.92549, 0.815686, 0.486275, 1 )
+material = ExtResource( 15 )
 position = Vector2( 2842, 2692 )
 rotation = 0.902931
-z_index = 3
 texture = ExtResource( 20 )
 script = ExtResource( 3 )
+
+[node name="EatenSprite" type="Sprite" parent="StuffToEat"]
+material = ExtResource( 27 )
+texture = SubResource( 1 )
+centered = false
+flip_v = true
+
+[node name="Worm" parent="." instance=ExtResource( 22 )]
+modulate = Color( 0.996078, 0.988235, 0.560784, 1 )
+position = Vector2( 869, 2705 )
+z_index = 3
+is_player = true
+
+[node name="EatenViewport" type="Viewport" parent="."]
+size = Vector2( 4096, 4096 )
+transparent_bg = true
+render_target_clear_mode = 1
+render_target_update_mode = 3
+
+[node name="EatenTrace" type="Sprite" parent="EatenViewport"]
+scale = Vector2( 0.5, 0.5 )
+z_index = 3
+texture = ExtResource( 26 )
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
@@ -654,54 +684,67 @@ position = Vector2( 2322, 1395 )
 z_index = 3
 max_len = 4
 
-[node name="Fly4" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Flies" type="Node" parent="."]
+
+[node name="Fly4" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 2670, 2488 )
 z_index = 3
 
-[node name="Fly5" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly5" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 2611, 1509 )
 z_index = 3
 
-[node name="Fly6" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly6" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 1852, 2704 )
 z_index = 3
 
-[node name="Fly7" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly7" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 3388, 2582 )
 z_index = 3
 
-[node name="Fly8" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly8" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 2131, 1357 )
 z_index = 3
 
-[node name="Fly9" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly9" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 3024, 993 )
 z_index = 3
 
-[node name="Fly10" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly10" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 1920, 728 )
 z_index = 3
 
-[node name="Fly11" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly11" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 1314, 988 )
 z_index = 3
 
-[node name="Fly12" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly12" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 1439, 3678 )
 z_index = 3
 
-[node name="Fly13" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly13" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 2661, 1846 )
 z_index = 3
 
-[node name="Fly2" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly2" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 2116, 3993 )
 z_index = 3
 
-[node name="Fly3" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly3" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 3063, 3293 )
 z_index = 3
 
-[node name="Fly" parent="Enemies" instance=ExtResource( 18 )]
+[node name="Fly" parent="Flies" instance=ExtResource( 18 )]
 position = Vector2( 986, 2780 )
 z_index = 3
+
+[node name="EventPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+volume_db = -10.0
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+autoplay = true
