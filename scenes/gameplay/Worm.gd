@@ -2,6 +2,7 @@ extends Node2D
 class_name Worm
 
 
+export var start_curled = true
 export var max_len := 20
 export var point_delta := 16
 export var speed := 256
@@ -47,15 +48,24 @@ func start(active_: bool = true, moving_: bool = true):
 	head.position = position
 	position = Vector2.ZERO
 	body_points = [head.position]
-	var radius := 0.0
-	var delta := PI/2
-	for i in max_len:
-		radius += point_delta * 0.2
-		delta += .6
-		body_points.append(head.position + Vector2(cos(delta)*radius, sin(delta)*radius))
+	if start_curled:
+		var radius := 0.0
+		var delta := PI/2
+		for i in max_len:
+			radius += point_delta * 0.2
+			delta += .6
+			body_points.append(head.position + Vector2(cos(delta)*radius, sin(delta)*radius))
+	else:
+		var point = Vector2(head.position)
+		for i in max_len:
+			point += Vector2.ONE * point_delta - Vector2(randf() * point_delta, randf()*point_delta)
+			body_points.append(point)
 	if body:
 		body.points = body_points
 		outline.points = body_points
+
+
+		
 	active = active_
 	moving = moving_
 	original_color = modulate
