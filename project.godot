@@ -49,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/game-template/scenes.gd"
 }, {
-"base": "Worm",
-"class": "Slug",
-"language": "GDScript",
-"path": "res://scenes/gameplay/EnemySlug.gd"
-}, {
 "base": "CanvasLayer",
 "class": "Transition",
 "language": "GDScript",
@@ -78,7 +73,6 @@ _global_script_class_icons={
 "Maggot": "",
 "SceneData": "",
 "Scenes": "",
-"Slug": "",
 "Transition": "",
 "Worm": "",
 "WormCollider": ""

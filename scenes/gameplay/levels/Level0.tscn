@@ -113,7 +113,7 @@ centered = false
 flip_v = true
 
 [node name="Worm" parent="." instance=ExtResource( 16 )]
-modulate = Color( 0.941176, 0.870588, 0.666667, 1 )
+modulate = Color( 0.996078, 0.988235, 0.560784, 1 )
 position = Vector2( -1238, 1107 )
 is_player = true
 

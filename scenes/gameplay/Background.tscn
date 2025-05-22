@@ -49,7 +49,10 @@ num_random = 150
 size_w = 4000
 size_h = 4000
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Node2D3" type="Node2D" parent="."]
+z_index = -2
+
+[node name="TextureRect" type="TextureRect" parent="Node2D3"]
 modulate = Color( 0.988235, 0.913725, 0.733333, 1 )
 margin_left = -2048.0
 margin_top = -2048.0
@@ -72,6 +75,7 @@ tile_data = PoolIntArray( 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3
 
 [node name="Leaves" type="Node2D" parent="."]
 modulate = Color( 0.556863, 0.556863, 0.556863, 1 )
+z_index = -1
 
 [node name="Sprite0081" type="Sprite" parent="Leaves"]
 modulate = Color( 0.364706, 0.721569, 0.360784, 1 )
@@ -130,7 +134,7 @@ stretch_mode = 2
 z_index = 100
 
 [node name="TextureRect2" type="TextureRect" parent="Node2D"]
-modulate = Color( 0.901961, 0.831373, 0.670588, 0.337255 )
+modulate = Color( 0.901961, 0.831373, 0.670588, 0.282353 )
 margin_left = -2048.0
 margin_top = -2048.0
 margin_right = 2048.0
