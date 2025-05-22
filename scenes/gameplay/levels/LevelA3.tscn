@@ -230,7 +230,6 @@ modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 674, 2273 )
 rotation = 0.42893
-scale = Vector2( 1, 1 )
 texture = ExtResource( 7 )
 script = ExtResource( 1 )
 start_decay_bites = 30
@@ -249,7 +248,6 @@ modulate = Color( 0.698039, 0.929412, 0.521569, 1 )
 material = ExtResource( 16 )
 position = Vector2( 1299, 546 )
 rotation = -3.07042
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 script = ExtResource( 1 )
 start_decay_bites = 10
@@ -287,7 +285,6 @@ material = ExtResource( 16 )
 position = Vector2( 945.567, 549.567 )
 texture = ExtResource( 13 )
 script = ExtResource( 1 )
-start_decay_bites = 2
 
 [node name="DecayItem5" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.937255, 0.87451, 0.631373, 1 )
@@ -296,7 +293,6 @@ position = Vector2( 904.567, 525.567 )
 rotation = 1.62105
 texture = ExtResource( 15 )
 script = ExtResource( 1 )
-start_decay_bites = 2
 
 [node name="DecayItem12" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.698039, 0.929412, 0.521569, 1 )

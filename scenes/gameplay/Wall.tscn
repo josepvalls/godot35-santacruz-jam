@@ -32,10 +32,9 @@ extents = Vector2( 1024, 256 )
 script = ExtResource( 4 )
 num_random = 5
 num_homogeneous = 10
+size_w = 2200
 size_h = 0
 offset = Vector2( -90, -200 )
-color_r_mult = 0.3
-color_g_mult = 1.0
 
 [node name="TextureRect3" type="TextureRect" parent="."]
 visible = false
