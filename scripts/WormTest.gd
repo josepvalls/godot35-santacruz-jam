@@ -103,8 +103,10 @@ func _input(event):
 	if is_playing:
 		if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
 			$Worm.moving = true
+			use_keyboard = false
 		elif event is InputEventKey and event.pressed: # and event.keycode == KEY_ESCAPE:
 			$Worm.moving = true
+			use_keyboard = true
 
 
 	

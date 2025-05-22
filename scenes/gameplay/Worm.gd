@@ -2,6 +2,7 @@ extends Node2D
 class_name Worm
 
 
+export var start_curled = true
 export var max_len := 20
 export var point_delta := 16
 export var speed := 256
@@ -47,15 +48,24 @@ func start(active_: bool = true, moving_: bool = true):
 	head.position = position
 	position = Vector2.ZERO
 	body_points = [head.position]
-	var radius := 0.0
-	var delta := PI/2
-	for i in max_len:
-		radius += point_delta * 0.2
-		delta += .6
-		body_points.append(head.position + Vector2(cos(delta)*radius, sin(delta)*radius))
+	if start_curled:
+		var radius := 0.0
+		var delta := PI/2
+		for i in max_len:
+			radius += point_delta * 0.2
+			delta += .6
+			body_points.append(head.position + Vector2(cos(delta)*radius, sin(delta)*radius))
+	else:
+		var point = Vector2(head.position)
+		for i in max_len:
+			point += Vector2.ONE * point_delta - Vector2(randf() * point_delta, randf()*point_delta)
+			body_points.append(point)
 	if body:
 		body.points = body_points
 		outline.points = body_points
+
+
+		
 	active = active_
 	moving = moving_
 	original_color = modulate
@@ -72,14 +82,12 @@ func _physics_process(delta):
 	if active and target:
 		var point = target.position
 		var head_rotation = head.rotation
-		head_rotation -= PI/2
 		var target_rotation = null
 		head.look_at(point)
 		target_rotation = head.rotation
 		var actual_rotation = move_toward(head_rotation, target_rotation, rotate_speed * delta)
 		head.rotation = actual_rotation
 		# this is just for looks until we fix the sprites to face right
-		head.rotation += PI/2
 		point = to_local(point)
 		if moving and head.position.distance_to(point) >= follow_margin:
 			if physics_based_movement:
