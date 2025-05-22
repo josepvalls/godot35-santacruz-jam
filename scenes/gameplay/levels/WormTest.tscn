@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/gameplay/DecayItem.gd" type="Script" id=1]
 [ext_resource path="res://assets/sfx/sfx_movement6(slow).wav" type="AudioStream" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://scenes/gameplay/Beetle.tscn" type="PackedScene" id=29]
 [ext_resource path="res://scenes/gameplay/EnemyMaggot.tscn" type="PackedScene" id=30]
 [ext_resource path="res://scenes/gameplay/Fly.tscn" type="PackedScene" id=31]
+[ext_resource path="res://scenes/gameplay/EnemySlug.tscn" type="PackedScene" id=32]
 
 [sub_resource type="ViewportTexture" id=7]
 viewport_path = NodePath("EatenViewport")
@@ -207,6 +208,9 @@ position = Vector2( 141, 48 )
 [node name="Beetle2" parent="Enemies" instance=ExtResource( 29 )]
 position = Vector2( -379, 87 )
 
+[node name="Slug" parent="Enemies" instance=ExtResource( 32 )]
+position = Vector2( 183, 884 )
+
 [node name="EatenViewport" type="Viewport" parent="."]
 size = Vector2( 2048, 2048 )
 transparent_bg = true
@@ -297,6 +301,18 @@ rotation = -0.379512
 [node name="Fly5" parent="Flies" instance=ExtResource( 31 )]
 
 [node name="Fly6" parent="Flies" instance=ExtResource( 31 )]
+
+[node name="Fly7" parent="Flies" instance=ExtResource( 31 )]
+
+[node name="Fly8" parent="Flies" instance=ExtResource( 31 )]
+
+[node name="Fly9" parent="Flies" instance=ExtResource( 31 )]
+
+[node name="Fly10" parent="Flies" instance=ExtResource( 31 )]
+
+[node name="Fly11" parent="Flies" instance=ExtResource( 31 )]
+
+[node name="Fly12" parent="Flies" instance=ExtResource( 31 )]
 
 [node name="EventPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
