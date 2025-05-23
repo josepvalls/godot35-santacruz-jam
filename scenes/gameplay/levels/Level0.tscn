@@ -1,17 +1,19 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/sfx/sfx_movement6(slow).wav" type="AudioStream" id=1]
 [ext_resource path="res://scenes/MainCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/WormTest.gd" type="Script" id=3]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/menu/LevelAdvanceMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sprites/shaded/sprite_0085.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/leaves/leaves-a.png" type="Texture" id=6]
 [ext_resource path="res://scenes/gameplay/EatenNoOutline.tres" type="Material" id=7]
+[ext_resource path="res://assets/sprites/leaves/leaves-c.png" type="Texture" id=8]
 [ext_resource path="res://scenes/gameplay/Wall.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/gameplay/RockSA.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/gameplay/RockSB.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/gameplay/RockSC.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/gameplay/RockLA.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/sprites/leaves/leaves-c-button-hover.png" type="Texture" id=14]
 [ext_resource path="res://scenes/gameplay/Fly.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/gameplay/Worm.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/gameplay/Background.tscn" type="PackedScene" id=18]
@@ -29,7 +31,7 @@ viewport_path = NodePath("EatenViewport")
 
 [node name="Level0" type="Node2D"]
 script = ExtResource( 3 )
-next_level = "Level1"
+next_level = "LevelA1"
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
@@ -37,8 +39,11 @@ next_level = "Level1"
 
 [node name="MainCamera" parent="." instance=ExtResource( 2 )]
 
+[node name="Background2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 920, 762 )
+
 [node name="Background" parent="." instance=ExtResource( 18 )]
-position = Vector2( 460, 381 )
+position = Vector2( -3175, 760 )
 
 [node name="PlayerTarget" type="Sprite" parent="."]
 visible = false
@@ -61,19 +66,19 @@ unique_name_in_owner = true
 [node name="a" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.976471, 0.447059, 0.0627451, 1 )
 material = ExtResource( 28 )
-position = Vector2( 183.02, 1037.98 )
+position = Vector2( 225, 1081 )
 rotation = -0.742166
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+scale = Vector2( 0.985087, 1.1125 )
+texture = ExtResource( 8 )
 script = ExtResource( 20 )
 
 [node name="c" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 1, 0.886275, 0.14902, 1 )
 material = ExtResource( 28 )
-position = Vector2( 1531, 928 )
+position = Vector2( 1525, 957 )
 rotation = 0.785398
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+scale = Vector2( 1.06649, 0.962206 )
+texture = ExtResource( 14 )
 script = ExtResource( 20 )
 
 [node name="frog" type="Sprite" parent="StuffToEat/Stuff"]
@@ -86,19 +91,19 @@ script = ExtResource( 20 )
 [node name="e" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 0.976471, 0.447059, 0.0627451, 1 )
 material = ExtResource( 28 )
-position = Vector2( 782.02, 1138.98 )
-rotation = 2.20568
-scale = Vector2( 0.3, 0.3 )
+position = Vector2( 751, 1174 )
+rotation = 0.489764
+scale = Vector2( 0.709347, 0.695632 )
 texture = ExtResource( 6 )
 script = ExtResource( 20 )
 
 [node name="g" type="Sprite" parent="StuffToEat/Stuff"]
 modulate = Color( 1, 0.886275, 0.14902, 1 )
 material = ExtResource( 28 )
-position = Vector2( 504.02, 918.978 )
-rotation = 0.120709
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 6 )
+position = Vector2( 529, 932 )
+rotation = 3.65556
+scale = Vector2( 1.26282, 1.134 )
+texture = ExtResource( 14 )
 script = ExtResource( 20 )
 
 [node name="EatenSprite" type="Sprite" parent="StuffToEat"]
@@ -108,7 +113,7 @@ centered = false
 flip_v = true
 
 [node name="Worm" parent="." instance=ExtResource( 16 )]
-modulate = Color( 0.941176, 0.870588, 0.666667, 1 )
+modulate = Color( 0.996078, 0.988235, 0.560784, 1 )
 position = Vector2( -1238, 1107 )
 is_player = true
 

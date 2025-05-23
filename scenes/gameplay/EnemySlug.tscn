@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/gameplay/EnemySlug.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/worm/hudPlayer_green.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/character_sprites/enemy_worm_body.png" type="Texture" id=3]
+[ext_resource path="res://scenes/gameplay/SlugWidth.tres" type="Curve" id=4]
+[ext_resource path="res://assets/slug_head3.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 11.1803
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 14.0
+
+[node name="Slug" type="Node2D"]
+script = ExtResource( 1 )
+start_curled = false
+speed = 16
+rotate_speed = 1.0
+
+[node name="TargetHint" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="Outline" type="Line2D" parent="."]
+points = PoolVector2Array( 2, 50, -70, 204, -130, 412, -10, 630, 354, 750, 380, 486 )
+width = 74.0
+width_curve = ExtResource( 4 )
+default_color = Color( 0, 0, 0, 1 )
+texture = ExtResource( 3 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Body" type="Line2D" parent="."]
+modulate = Color( 0.843137, 0.733333, 0.0196078, 1 )
+points = PoolVector2Array( 2, 50, -70, 204, -130, 412, -10, 630, 354, 750, 380, 486 )
+width = 66.0
+width_curve = ExtResource( 4 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Head" type="KinematicBody2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Head"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+shape = SubResource( 4 )
+
+[node name="Head" type="Sprite" parent="Head"]
+modulate = Color( 0.843137, 0.733333, 0.0196078, 1 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/gameplay/Worm.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/character_sprites/worm_head_gray.png" type="Texture" id=2]
+[ext_resource path="res://assets/worm-head.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/character_sprites/worm_body_gray.png" type="Texture" id=3]
 [ext_resource path="res://scenes/captaintoto/WormCollider.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/gameplay/WormWidth.tres" type="Curve" id=5]
