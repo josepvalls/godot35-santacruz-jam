@@ -20,20 +20,13 @@ export var next_level := "Level0"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	status_label = $CanvasLayer/Label
+	status_label = get_node_or_null("CanvasLayer/Label")
 	#$Worm.start_position = $Worm.position
 	$Worm.target = $PlayerTarget
 	$Worm.connect("moved", self, "moved")
 	$Worm.connect("on_hit", self, "on_hit")
 	$Worm.connect("on_hit_self", self, "on_hit_self")
-	$Worm.start(true, false)
 	
-	
-	for i in $Enemies.get_children():
-		i.start()
-	for i in $Flies.get_children():
-		i.start()
-
 	for item_ in $"%Stuff".get_children():
 		var item: DecayItem = item_
 		if item.material:
@@ -44,6 +37,18 @@ func _ready():
 	GameManager.stuff = stuff_progress
 	GameManager.next_level = next_level
 	GameManager.current_level += 1
+	$Worm.start(true, false)
+	
+func start():
+	# Called from gameplay.gd
+	# Prevent the enemies from moving before the fade-in ends
+	for i in $Enemies.get_children():
+		i.start()
+	for i in $Flies.get_children():
+		i.start()
+	
+
+	
 
 func decayed(item: DecayItem):
 	pass
